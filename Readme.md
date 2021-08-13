@@ -1,5 +1,4 @@
-# EXPLODING HOT POTATO SOCCER! 
-# A project by Mike Schnall.
+# EXPLODING HOT POTATO SOCCER! - Mike Schnall.
 
 Exploding Hot Potato Soccer! is a soccer game played in a rectangular 
 grid with two goals, one on each side. 
@@ -45,7 +44,7 @@ no goal scored. At time expiration, the ball will explode. The
 side that the the ball exploded on loses the game.
 
 ## Preview
-![](Mockup.jpg)
+![](https://wireframe.cc/pro/pp/79e5f68a7463915)
 
 ### Clickable items on the page will include:
  - New game
