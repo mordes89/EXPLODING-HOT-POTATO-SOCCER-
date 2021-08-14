@@ -1,10 +1,22 @@
 // @import "./styles/example.scss";
 
 body {
-   // margin: 0px;
+   margin: 0px;
+   overflow: hidden;
+
    background-color: rgb(246, 230, 9);
+   border: 200px red;
+   
+}
+
+.canvas1 {
+   background-color: #f1f508;
+   position: absolute;
+   width: 100%;
+   height: 100%;
 }
 
 #main {
    color: rgb(15, 29, 233);
 }
+
