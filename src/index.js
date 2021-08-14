@@ -17,53 +17,66 @@ let user = {
    y: 30,
    w: 50,
    h: 20,
-   move: 10
+   move: 100
 }
 
 document.addEventListener("keydown", keyDowns);
 document.addEventListener("keyup", keyUps);
 
-
+let continuousLeft = false;
+let continuousRight = false;
+let continuousDown = false;
+let continuousUp = false;
 
 function keyDowns(){
    if (event.code ==='ArrowLeft'){
-      user.x -= user.move;
+      continuousLeft = true      
       console.log(event.code)
-   }
-   if (event.code ==='ArrowRight'){
-      user.x += user.move;
+   } else if (event.code ==='ArrowRight'){
+      continuousRight = true
       console.log(event.code)
    }
    if (event.code ==='ArrowDown'){
-      user.y += user.move;
+      continuousDown = true      
       console.log(event.code)
-   }
-   if (event.code ==='ArrowUp'){
-      user.y -= user.move;
+   } else if (event.code ==='ArrowUp'){
+      continuousUp = true
       console.log(event.code)
    }
 }
 
 function keyUps(){
    if (event.code ==='ArrowLeft'){
-      user.x -= user.move;
+      continuousLeft = false
       console.log(event.code)
-   }
-   if (event.code ==='ArrowRight'){
-      user.x += user.move;
+   } else if (event.code ==='ArrowRight'){
+      continuousRight = false
       console.log(event.code)
    }
    if (event.code ==='ArrowDown'){
-      user.y += user.move;
+      continuousDown = false
       console.log(event.code)
-   }
-   if (event.code ==='ArrowUp'){
-      user.y -= user.move;
+   } else if (event.code ==='ArrowUp'){
+      continuousUp = false  
       console.log(event.code)
    }
 }
 
 function play(){
+   if (continuousLeft === true){
+      user.x -= user.move;
+   }
+   if (continuousRight === true){
+      user.x += user.move;
+   }
+   if (continuousDown === true){
+      user.y += user.move;
+   }
+   if (continuousUp === true){
+      user.y -= user.move;
+   }
+
+
    // Clear the board before making a move:
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
 
