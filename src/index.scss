@@ -1,7 +1,26 @@
 // @import "./styles/example.scss";
 
+header {
+   background-color: red;
+   position: flex;
+   font-size: 30px;
+   padding: 2px;
+   // justify-content: center;
+   left: 50;
+   // font-style: italic;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+footer {
+   background-color: red;
+   position: flex;
+   justify-content: space-around;
+
+
+}
 body {
-   margin: 5px;
+   // margin: 0px;
    overflow: hidden;
 
    background-color: rgb(246, 230, 9);
@@ -11,15 +30,16 @@ body {
 
 .canvas1 {
    // margin: 10px;
-   border: 10px;
-   border-color: honeydew;
+   // left: 100px;
+   // border: 10px;
+   // border-color: honeydew;
    background-color: #049c18;
    position: flex;
    justify-content: space-around;
-   opacity: 0.5;
+   // opacity: 0.5;
 }
 
-#main {
-   color: rgb(15, 29, 233);
-}
+// #main {
+//    color: rgb(15, 29, 233);
+// }
 

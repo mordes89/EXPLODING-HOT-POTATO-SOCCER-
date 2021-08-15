@@ -1,21 +1,28 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+header {
+  background-color: red;
+  position: flex;
+  font-size: 30px;
+  padding: 2px;
+  left: 50;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+footer {
+  background-color: red;
+  position: flex;
+  justify-content: space-around;
+}
+
 body {
-  margin: 5px;
   overflow: hidden;
   background-color: #f6e609;
 }
 
 .canvas1 {
-  border: 10px;
-  border-color: honeydew;
   background-color: #049c18;
   position: flex;
   justify-content: space-around;
-  opacity: 0.5;
-}
-
-#main {
-  color: #0f1de9;
 }
