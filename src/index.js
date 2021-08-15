@@ -1,5 +1,5 @@
 // import Example from "./scripts/example";
-
+// import users from "./scripts/user";
 
 // document.addEventListener("DOMContentLoaded", ()=> {
 //    // console.log("Hello World!");
@@ -7,21 +7,52 @@
 //    // new Example(main);
 // }); 
 const canvas = document.querySelector('canvas'); //find the <canvas> element in the HTML
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// canvas.width = window.innerWidth-10;
+// canvas.height = window.innerHeight-10;
 const ctx = canvas.getContext('2d');            // Conventionally, ctx defined as our 2d canvas
+ctx.rect(100,100,window.innerWidth, window.innerHeight-10)
+
 requestAnimationFrame(play); //Loop gameplay
+
 // User
 let user = {
-   x: 20,
-   y: 30,
-   w: 50,
-   h: 20,
-   move: 100
+   x: 10,
+   y: 50,
+   w: window.innerWidth/50,
+   h: window.innerWidth/10,
+   steps: 15
+}
+
+let ball = {
+   x: user.x+10,
+   y: user.y+15,
+   radius: window.innerWidth/50,
+   steps: 15   
 }
 
 document.addEventListener("keydown", keyDowns);
 document.addEventListener("keyup", keyUps);
+
+function play(){   
+   moveUser();
+
+   // Clear the board before making a move:
+   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+   // print user and ball:
+   printUser();
+   printBall();     
+
+   // Continue playing:
+   requestAnimationFrame(play); //Loop gameplay
+}
+
+
+
+
+
+
+
 
 let continuousLeft = false;
 let continuousRight = false;
@@ -62,34 +93,40 @@ function keyUps(){
    }
 }
 
-function play(){
-   if (continuousLeft === true){
-      user.x -= user.move;
-   }
-   if (continuousRight === true){
-      user.x += user.move;
-   }
-   if (continuousDown === true){
-      user.y += user.move;
-   }
-   if (continuousUp === true){
-      user.y -= user.move;
-   }
 
 
-   // Clear the board before making a move:
-   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
-
-   // User's new position printed:
+function printUser(){
    ctx.fillStyle = 'red';
    ctx.fillRect(user.x, user.y, user.w, user.h);
+}
 
-   // Continue playing:
-   requestAnimationFrame(play); //Loop gameplay
-
+function printBall(){
+   // let x = 60;
+   // let y = 25;
+   ctx.beginPath();
+   ctx.lineWidth = 5;
+   ctx.strokeStyle = "red"
+   ctx.arc(ball.x, ball.y, 5, Math.PI * 2, false);
+   ctx.stroke();   
+   ctx.fill(); 
 }
 
 
+
+function moveUser(){
+   if (continuousLeft === true && user.x - user.steps > canvas.width/50){
+      user.x -= user.steps;
+   }
+   if (continuousRight === true && user.x + user.steps < (canvas.width/2)-user.w){
+      user.x += user.steps;
+   }
+   if (continuousDown === true && user.y + user.steps < canvas.height-user.h){
+      user.y += user.steps;
+   }
+   if (continuousUp === true && user.y - user.steps > canvas.height/50){
+      user.y -= user.steps;
+   }
+}
 
 
 
