@@ -7,8 +7,8 @@
 //    // new Example(main);
 // }); 
 const canvas = document.querySelector('canvas'); //find the <canvas> element in the HTML
-// canvas.width = window.innerWidth-10;
-// canvas.height = window.innerHeight-10;
+canvas.width = window.innerWidth-10;
+canvas.height = window.innerHeight-100;
 canvas.style.top = "200px";
 canvas.style.left = "100px";
 const ctx = canvas.getContext('2d');            // Conventionally, ctx defined as our 2d canvas
@@ -34,7 +34,8 @@ function play(){
    printpenBoxL();
    printpenBoxR();
    // print user and ball:
-   printUser();
+   // printUser();   
+   printSprite(userSprite, user.dpFrameX, user.dpFrameY, user.dpW, user.dpH, user.x, user.y, canvas.width/10, canvas.height/6)
    printBall(); 
 
    // Continue playing:
@@ -91,7 +92,20 @@ let user = {
    y: canvas.height/2-canvas.height/10,
    w: canvas.width/50,
    h: canvas.height/10,
+   dpW: 32,
+   dpH: 48,
+   dpFrameX: 0,
+   dpFrameY: 0,
    steps: 5
+}
+
+const userSprite = new Image();
+userSprite.src = "deadpool.png"; //dpW: 32, dpH: 48,
+// userSprite.src = "yoda.png"; //dpW: 32, dpH: 48,
+// userSprite.src = "hulk.png"; //dpW: 40, dpH: 56,
+
+function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
+   ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
 }
 
 function printUser(){
