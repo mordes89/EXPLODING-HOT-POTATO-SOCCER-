@@ -36,8 +36,6 @@ function play(){
    // print user and ball:
    printUser();
    printBall(); 
-   // ball.x += 1 
-
 
    // Continue playing:
    requestAnimationFrame(play); //Loop gameplay
@@ -126,9 +124,11 @@ let ball = {
    x: user.x+10,
    y: user.y+15,
    radius: window.innerWidth/170,
-   Vx: 15,
-   Vy: 15
+   // vx: 1,
+   // vy: 1
 }
+let vx = 1;
+let vy = 1;
 function printBall(){
    ctx.beginPath();
    ctx.lineWidth = 6;
@@ -138,20 +138,43 @@ function printBall(){
    ctx.fill(); 
 }
 
-let ballRolling = true;
 
+let ballRolling = true;
 function moveBall(){
-   if (ballRolling === true && ball.x - ball.Vx > canvas.width/50){
-      ball.x -= ball.Vx;
+   if (ballRolling) {      
+      ball.x += vx;
+      ball.y += vy;
    }
-   if (ballRolling === true && ball.x + ball.Vx < canvas.width-ball.w){
-      ball.x += ball.Vx;
-   } 
-   if (ballRolling === true && ball.y + ball.Vy < canvas.height-ball.h){
-      ball.y += ball.Vy;
+   // player takes control
+   if ((ball.x <= user.x && ball.x >= user.x - user.w) && (ball.y >= user.y && ball.y <= (user.y + user.h))) {
+      ballRolling = false;
+      ball.x = user.x+1;
+      ball.y = user.y+1;
    }
-   if (ballRolling === true && ball.y - ball.Vy > canvas.height/50){
-      ball.y -= ball.Vy;
+   // turn around at wall left/right
+   if ((ball.x + vx <= 0) || (ball.x + vx > canvas.width-(ball.radius*2))){
+      if (vx>0) {         
+         vx = -(vx+0.2);
+      }else{
+         vx = -(vx-0.2);
+      }
+      if (vx>20 || vx<-20) {
+         vx = 1;
+      }     
+      console.log(vx);
+   }
+
+   // turn around at wall top/bottom
+   if ((ball.y + vy <= 0) || (ball.y + vy > canvas.height-(ball.radius*2))){
+      if (vy>0) {         
+         vy = -(vy+0.2);
+      }else{
+         vy = -(vy-0.2);
+      } 
+      if (vy>20 || vy<-20) {
+         vy = 1;
+      }     
+      console.log(vy);
    }
 }
 
@@ -188,73 +211,71 @@ function printMidLine(){
 let penBoxL = {
    sBoxX: canvas.width/12,
    sBoxY: canvas.height/4,
-   sBoxW: canvas.width/140,
+   verticalW: canvas.width/140,
    sBoxH: canvas.height/2,
+
    lBoxX: canvas.width/8,
    lBoxY: canvas.height/5,
-   lBoxW: canvas.width/140,
-   lBoxH: canvas.height/1.6,
+   lBoxH: canvas.height/1.7,
+
    sBoxTopLineX: 0,
    sBoxTopLineY: canvas.height/4,
    sBoxTopLineW: canvas.width/12,
-   sBoxTopLineH: canvas.width/140,
+   horizontalH: canvas.width/140,
    sBoxBottLineX: 0,
-   sBoxBottLineY: canvas.height - canvas.height/3.8,
+   sBoxBottLineY: canvas.height - canvas.height/4 - canvas.width/140,
    sBoxBottLineW: canvas.width/12,
-   sBoxBottLineH: canvas.width/140,
+
    lBoxTopLineX: 0,
    lBoxTopLineY: canvas.height/5,
    lBoxTopLineW: canvas.width/8,
-   lBoxTopLineH: canvas.width/140,
    lBoxBottLineX: 0,
-   lBoxBottLineY: canvas.height - canvas.height/5.3,
+   lBoxBottLineY: canvas.height - canvas.height/5 - canvas.width/140,
    lBoxBottLineW: canvas.width/8,
-   lBoxBottLineH: canvas.width/140,
 }
 function printpenBoxL(){
    ctx.fillStyle = 'white';
-   ctx.fillRect(penBoxL.sBoxX, penBoxL.sBoxY, penBoxL.sBoxW, penBoxL.sBoxH);
-   ctx.fillRect(penBoxL.lBoxX, penBoxL.lBoxY, penBoxL.lBoxW, penBoxL.lBoxH);
-   ctx.fillRect(penBoxL.sBoxTopLineX, penBoxL.sBoxTopLineY, penBoxL.sBoxTopLineW, penBoxL.sBoxTopLineH);
-   ctx.fillRect(penBoxL.sBoxBottLineX, penBoxL.sBoxBottLineY, penBoxL.sBoxBottLineW, penBoxL.sBoxBottLineH);
-   ctx.fillRect(penBoxL.lBoxTopLineX, penBoxL.lBoxTopLineY, penBoxL.lBoxTopLineW, penBoxL.lBoxTopLineH);
-   ctx.fillRect(penBoxL.lBoxBottLineX, penBoxL.lBoxBottLineY, penBoxL.lBoxBottLineW, penBoxL.lBoxBottLineH);
+   ctx.fillRect(penBoxL.sBoxX, penBoxL.sBoxY, penBoxL.verticalW, penBoxL.sBoxH);
+   ctx.fillRect(penBoxL.lBoxX, penBoxL.lBoxY, penBoxL.verticalW, penBoxL.lBoxH);
+   ctx.fillRect(penBoxL.sBoxTopLineX, penBoxL.sBoxTopLineY, penBoxL.sBoxTopLineW, penBoxL.horizontalH);
+   ctx.fillRect(penBoxL.sBoxBottLineX, penBoxL.sBoxBottLineY, penBoxL.sBoxBottLineW, penBoxL.horizontalH);
+   ctx.fillRect(penBoxL.lBoxTopLineX, penBoxL.lBoxTopLineY, penBoxL.lBoxTopLineW, penBoxL.horizontalH);
+   ctx.fillRect(penBoxL.lBoxBottLineX, penBoxL.lBoxBottLineY, penBoxL.lBoxBottLineW, penBoxL.horizontalH);
 }
 
 let penBoxR = {
    sBoxX: canvas.width - penBoxL.sBoxX,
    sBoxY: penBoxL.sBoxY,
-   sBoxW: penBoxL.sBoxW,
-   sBoxH: canvas.height/2,
+   verticalW: penBoxL.verticalW,
+   sBoxH: penBoxL.sBoxH,
+
    lBoxX: canvas.width - penBoxL.lBoxX,
-   lBoxY: canvas.height/5,
-   lBoxW: canvas.width/140,
-   lBoxH: canvas.height/1.6,
+   lBoxY: penBoxL.lBoxY,
+   lBoxH: penBoxL.lBoxH,
+
    sBoxTopLineX: canvas.width - penBoxL.sBoxX,
-   sBoxTopLineY: canvas.height/4,
-   sBoxTopLineW: canvas.width/12,
-   sBoxTopLineH: canvas.width/140,
+   sBoxTopLineY: penBoxL.sBoxTopLineY,
+   sBoxTopLineW: penBoxL.sBoxTopLineW,
+   horizontalH: penBoxL.horizontalH,
    sBoxBottLineX: canvas.width - penBoxL.sBoxX,
-   sBoxBottLineY: canvas.height - canvas.height/3.8,
-   sBoxBottLineW: canvas.width/12,
-   sBoxBottLineH: canvas.width/140,
+   sBoxBottLineY: penBoxL.sBoxBottLineY,
+   sBoxBottLineW: penBoxL.sBoxBottLineW,
+
    lBoxTopLineX: canvas.width - penBoxL.lBoxX,
-   lBoxTopLineY: canvas.height/5,
-   lBoxTopLineW: canvas.width/8,
-   lBoxTopLineH: canvas.width/140,
+   lBoxTopLineY: penBoxL.lBoxTopLineY,
+   lBoxTopLineW: penBoxL.lBoxTopLineW,
    lBoxBottLineX: canvas.width - penBoxL.lBoxX,
-   lBoxBottLineY: canvas.height - canvas.height/5.3,
-   lBoxBottLineW: canvas.width/8,
-   lBoxBottLineH: canvas.width/140,
+   lBoxBottLineY: penBoxL.lBoxBottLineY,
+   lBoxBottLineW: penBoxL.lBoxBottLineW,
 }
 function printpenBoxR(){
    ctx.fillStyle = 'white';
-   ctx.fillRect(penBoxR.sBoxX, penBoxR.sBoxY, penBoxR.sBoxW, penBoxR.sBoxH);
-   ctx.fillRect(penBoxR.lBoxX, penBoxR.lBoxY, penBoxR.lBoxW, penBoxR.lBoxH);
-   ctx.fillRect(penBoxR.sBoxTopLineX, penBoxR.sBoxTopLineY, penBoxR.sBoxTopLineW, penBoxR.sBoxTopLineH);
-   ctx.fillRect(penBoxR.sBoxBottLineX, penBoxR.sBoxBottLineY, penBoxR.sBoxBottLineW, penBoxR.sBoxBottLineH);
-   ctx.fillRect(penBoxR.lBoxTopLineX, penBoxR.lBoxTopLineY, penBoxR.lBoxTopLineW, penBoxR.lBoxTopLineH);
-   ctx.fillRect(penBoxR.lBoxBottLineX, penBoxR.lBoxBottLineY, penBoxR.lBoxBottLineW, penBoxR.lBoxBottLineH);
+   ctx.fillRect(penBoxR.sBoxX, penBoxR.sBoxY, penBoxR.verticalW, penBoxR.sBoxH);
+   ctx.fillRect(penBoxR.lBoxX, penBoxR.lBoxY, penBoxR.verticalW, penBoxR.lBoxH);
+   ctx.fillRect(penBoxR.sBoxTopLineX, penBoxR.sBoxTopLineY, penBoxR.sBoxTopLineW, penBoxR.horizontalH);
+   ctx.fillRect(penBoxR.sBoxBottLineX, penBoxR.sBoxBottLineY, penBoxR.sBoxBottLineW, penBoxR.horizontalH);
+   ctx.fillRect(penBoxR.lBoxTopLineX, penBoxR.lBoxTopLineY, penBoxR.lBoxTopLineW, penBoxR.horizontalH);
+   ctx.fillRect(penBoxR.lBoxBottLineX, penBoxR.lBoxBottLineY, penBoxR.lBoxBottLineW, penBoxR.horizontalH);
 }
 
 
@@ -286,6 +307,36 @@ function printgoalRight(){
    ctx.stroke();   
    ctx.fill(); 
 }
+
+// class Vector {
+//    constructor(x = canvas.width/2, y = canvas.height/2){
+//       this.x = x;
+//       this.y = y;
+//    }
+// }
+// class Rect{
+//    constructor(w, h){
+//       this.pos = new Vector;
+//       this.size = new Vector(w, h)
+//    }
+// }
+
+// class Ball extends Rect{
+//    constructor(){
+//       super(10,10);
+//       this.vel = new Vector;
+//    }
+// }
+
+// let ball2 = new Ball;
+
+// function update(dt){
+//    ball.pos.x += ball.vel.x * dt;
+//    ball.pos.y += ball.vel.y * dt;
+
+
+// }
+
 
 // // Field
 // ctx.fillStyle = 'green';
