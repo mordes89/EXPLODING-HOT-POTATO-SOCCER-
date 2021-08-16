@@ -100,9 +100,9 @@ let user = {
 }
 
 const userSprite = new Image();
-// userSprite.src = "deadpool.png"; //dpW: 32, dpH: 48,
-// userSprite.src = "yoda.png"; //dpW: 32, dpH: 48,
-userSprite.src = "hulk.png"; //dpW: 40, dpH: 56,
+// userSprite.src = "./pics/deadpool.png"; //dpW: 32, dpH: 48,
+// userSprite.src = "./pics/yoda.png"; //dpW: 32, dpH: 48,
+userSprite.src = "./pics/hulk.png"; //dpW: 40, dpH: 56,
 
 function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
    ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
@@ -112,31 +112,30 @@ function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
 //    ctx.fillStyle = 'red';
 //    ctx.fillRect(user.x, user.y, user.dpw, user.dpW);
 // }
-user.dpW
 function moveUser(){
    if (continuousLeft === true && user.x - user.steps > canvas.width/50){  
       user.x -= user.steps;   // 
       user.dpFrameY = 1;
-      userMoving();
+      userMovingPics();
    }
    if (continuousRight === true && user.x + user.steps < (canvas.width/2)-user.dpW){
       user.x += user.steps;
       user.dpFrameY = 2;
-      userMoving();
+      userMovingPics();
    }
    if (continuousDown === true && user.y + user.steps < canvas.height-user.dpW){
       user.y += user.steps;
       user.dpFrameY = 0;
-      userMoving();
+      userMovingPics();
    }
    if (continuousUp === true && user.y - user.steps > canvas.height/50){
       user.y -= user.steps;
       user.dpFrameY = 3;
-      userMoving();
+      userMovingPics();
    }
 }
 
-function userMoving() {   
+function userMovingPics() {   
    if (user.dpFrameX < 3) {
       user.dpFrameX++;
    } else {
@@ -169,6 +168,7 @@ function printBall(){
 
 
 let ballRolling = true;
+let posesion = false;
 function moveBall(){
    if (ballRolling) {      
       ball.x += vx;
@@ -177,7 +177,10 @@ function moveBall(){
    // player takes control
    if ((ball.x <= user.x+user.dpW && ball.x >= user.x - user.dpW) && (ball.y >= user.y && ball.y <= (user.y + user.dpW))) {
       ballRolling = false;
-      ball.x = user.x+50;
+      posesion = true;
+   }
+   if (posesion) {      //runs to the right with ball 
+      ball.x = user.x+70;
       ball.y = user.y+70;
    }
    // turn around at wall left/right
@@ -187,10 +190,10 @@ function moveBall(){
       }else{
          vx = -(vx-0.2);
       }
-      if (vx>20 || vx<-20) {
+      if (vx>20 || vx<-20) { //reset ball speed
          vx = 1;
       }     
-      console.log(vx);
+      // console.log(vx);
    }
    // turn around at wall top/bottom
    if ((ball.y + vy <= 0) || (ball.y + vy > canvas.height-(ball.radius*2))){
@@ -199,10 +202,10 @@ function moveBall(){
       }else{
          vy = -(vy-0.2);
       } 
-      if (vy>20 || vy<-20) {
+      if (vy>20 || vy<-20) { //reset ball speed
          vy = 1;
       }     
-      console.log(vy);
+      // console.log(vy);
    }
 }
 
