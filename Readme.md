@@ -80,6 +80,9 @@ This project will use the Canvas API.
 - ### Monday:     
             Iron out what I've done so far. Start implementing
             gameplay interactions with the user.
+            Start implementing
+            gameplay interactions with the AI.
+            Refactor code!
 
 - ### Tuesday:    
             Have a presentable simple game. Add functionality 
