@@ -35,7 +35,7 @@ function play(){
    printpenBoxR();
    // print user and ball:
    // printUser();   
-   printSprite(userSprite, user.dpFrameX, user.dpFrameY, user.dpW, user.dpH, user.x, user.y, canvas.width/10, canvas.height/6)
+   printSprite(userSprite, user.dpW * user.dpFrameX, user.dpH * user.dpFrameY, user.dpW, user.dpH, user.x, user.y, canvas.width/10, canvas.height/6)
    printBall(); 
 
    // Continue playing:
@@ -92,17 +92,17 @@ let user = {
    y: canvas.height/2-canvas.height/10,
    w: canvas.width/50,
    h: canvas.height/10,
-   dpW: 32,
-   dpH: 48,
+   dpW: 40,
+   dpH: 56,
    dpFrameX: 0,
    dpFrameY: 0,
    steps: 5
 }
 
 const userSprite = new Image();
-userSprite.src = "deadpool.png"; //dpW: 32, dpH: 48,
+// userSprite.src = "deadpool.png"; //dpW: 32, dpH: 48,
 // userSprite.src = "yoda.png"; //dpW: 32, dpH: 48,
-// userSprite.src = "hulk.png"; //dpW: 40, dpH: 56,
+userSprite.src = "hulk.png"; //dpW: 40, dpH: 56,
 
 function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
    ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
@@ -114,17 +114,33 @@ function printUser(){
 }
 
 function moveUser(){
-   if (continuousLeft === true && user.x - user.steps > canvas.width/50){
-      user.x -= user.steps;
+   if (continuousLeft === true && user.x - user.steps > canvas.width/50){  
+      user.x -= user.steps;   // 
+      user.dpFrameY = 1;
+      userFacing();
    }
    if (continuousRight === true && user.x + user.steps < (canvas.width/2)-user.w){
       user.x += user.steps;
+      user.dpFrameY = 2;
+      userFacing();
    }
    if (continuousDown === true && user.y + user.steps < canvas.height-user.h){
       user.y += user.steps;
+      user.dpFrameY = 0;
+      userFacing();
    }
    if (continuousUp === true && user.y - user.steps > canvas.height/50){
       user.y -= user.steps;
+      user.dpFrameY = 3;
+      userFacing();
+   }
+}
+
+function userFacing() {   
+   if (user.dpFrameX < 3) {
+      user.dpFrameX++;
+   } else {
+      user.dpFrameX = 0;
    }
 }
 
