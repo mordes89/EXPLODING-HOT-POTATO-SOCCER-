@@ -49,6 +49,8 @@ let continuousLeft = false;
 let continuousRight = false;
 let continuousDown = false;
 let continuousUp = false;
+let continuousS = false;
+let continuousW = false;
 
 function keyDowns(){
    if (event.code ==='ArrowLeft'){
@@ -83,10 +85,12 @@ function keyDowns(){
    }
 
    if (event.code ==='KeyS'){  //Aim kick down
-      
+      continuousS = true;
+      vy--;
    }
    if (event.code ==='KeyW'){  //Aim kick up
-      
+      continuousW = true;
+      vy++;
    }
 }
 
@@ -136,9 +140,9 @@ function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
 // }
 function moveUser(){
    if (continuousLeft === true && user.x - user.steps > canvas.width/50){  
-      user.x -= user.steps;   // 
-      user.dpFrameY = 1;
-      userMovingPics();
+      user.x -= user.steps;   // move in direction
+      user.dpFrameY = 1;      // character frame row 1
+      userMovingPics();       // alternate pice in row
       if (ballPosesion) {      //runs to the left with ball 
          ball.x = user.x+20;
          ball.y = user.y+user.dpH+10;
@@ -190,21 +194,19 @@ let ball = {
    x: user.x+user.dpW+10,
    y: user.y+user.dpH+10,
    radius: window.innerWidth/170,
-   // vx: 1,
-   // vy: 1
 }
-let vx = 1;
-let vy = 1;
 function printBall(){
    ctx.beginPath();
    ctx.lineWidth = 6;
    ctx.strokeStyle = "yellow"
    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
    ctx.stroke();   
-   ctx.fill(); 
+   // ctx.fill(); 
 }
 
 
+let vx = 7;
+let vy = 7;
 let ballRolling = true;
 let ballPosesion = false;
 function moveBall(){
@@ -213,9 +215,10 @@ function moveBall(){
       ball.y += vy;
    }
    // player takes control
-   if ((ball.x <= user.x+user.dpW && ball.x >= user.x - user.dpW) && (ball.y >= user.y && ball.y <= (user.y + user.dpW))) {
+   if ((ball.x <= user.x+user.dpW && ball.x >= user.x) && (ball.y >= user.y && ball.y <= (user.y + user.dpH))) {
       ballRolling = false;
       ballPosesion = true;
+      vy = 0.1;
    }
    
    // turn around at wall left/right
