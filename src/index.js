@@ -90,12 +90,12 @@ function keyUps(){
 let user = {
    x: canvas.width/10,
    y: canvas.height/2-canvas.height/10,
-   w: canvas.width/50,
-   h: canvas.height/10,
+   // w: canvas.width/50,
+   // h: canvas.height/10,
    dpW: 40,
    dpH: 56,
    dpFrameX: 0,
-   dpFrameY: 0,
+   dpFrameY: 2,
    steps: 5
 }
 
@@ -108,42 +108,41 @@ function printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
    ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
 }
 
-function printUser(){
-   ctx.fillStyle = 'red';
-   ctx.fillRect(user.x, user.y, user.w, user.h);
-}
-
+// function printUser(){
+//    ctx.fillStyle = 'red';
+//    ctx.fillRect(user.x, user.y, user.dpw, user.dpW);
+// }
+user.dpW
 function moveUser(){
    if (continuousLeft === true && user.x - user.steps > canvas.width/50){  
       user.x -= user.steps;   // 
       user.dpFrameY = 1;
-      userFacing();
+      userMoving();
    }
-   if (continuousRight === true && user.x + user.steps < (canvas.width/2)-user.w){
+   if (continuousRight === true && user.x + user.steps < (canvas.width/2)-user.dpW){
       user.x += user.steps;
       user.dpFrameY = 2;
-      userFacing();
+      userMoving();
    }
-   if (continuousDown === true && user.y + user.steps < canvas.height-user.h){
+   if (continuousDown === true && user.y + user.steps < canvas.height-user.dpW){
       user.y += user.steps;
       user.dpFrameY = 0;
-      userFacing();
+      userMoving();
    }
    if (continuousUp === true && user.y - user.steps > canvas.height/50){
       user.y -= user.steps;
       user.dpFrameY = 3;
-      userFacing();
+      userMoving();
    }
 }
 
-function userFacing() {   
+function userMoving() {   
    if (user.dpFrameX < 3) {
       user.dpFrameX++;
    } else {
       user.dpFrameX = 0;
    }
 }
-
 
 
 
@@ -176,10 +175,10 @@ function moveBall(){
       ball.y += vy;
    }
    // player takes control
-   if ((ball.x <= user.x && ball.x >= user.x - user.w) && (ball.y >= user.y && ball.y <= (user.y + user.h))) {
+   if ((ball.x <= user.x+user.dpW && ball.x >= user.x - user.dpW) && (ball.y >= user.y && ball.y <= (user.y + user.dpW))) {
       ballRolling = false;
-      ball.x = user.x+1;
-      ball.y = user.y+1;
+      ball.x = user.x+50;
+      ball.y = user.y+70;
    }
    // turn around at wall left/right
    if ((ball.x + vx <= 0) || (ball.x + vx > canvas.width-(ball.radius*2))){
@@ -193,7 +192,6 @@ function moveBall(){
       }     
       console.log(vx);
    }
-
    // turn around at wall top/bottom
    if ((ball.y + vy <= 0) || (ball.y + vy > canvas.height-(ball.radius*2))){
       if (vy>0) {         
