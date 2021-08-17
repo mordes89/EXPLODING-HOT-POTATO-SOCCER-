@@ -2,11 +2,11 @@
 
 header {
    background-color: red;
-   position: flex;
+   position: relative;
    font-size: 30px;
    padding: 2px;
    // justify-content: center;
-   left: 50;
+   left: 500;
    // font-style: italic;
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
@@ -20,24 +20,24 @@ footer {
 
 }
 body {
-   // margin: 0px;
-   overflow: hidden;
+   margin: 0px;
+   // overflow: hidden;
 
-   background-color: rgb(246, 230, 9);
+   background-color: rgb(14, 12, 97);
    // border: 200px red;
    
 }
 
-.canvas1 {
-   // margin: 10px;
-   // left: 100px;
-   // border: 10px;
-   // border-color: honeydew;
-   background-color: #049c18;
-   position: flex;
-   justify-content: space-around;
-   // opacity: 0.5;
-}
+// .canvas1 {
+//    margin: 10px;
+//    left: 100px;
+//    // border: 100px;
+//    // border-color: honeydew;
+//    background-color: #049c18;
+//    position: relative;
+//    justify-content: center;
+//    opacity: 15;
+// }
 
 // #main {
 //    color: rgb(15, 29, 233);

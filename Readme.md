@@ -101,3 +101,6 @@ Hopefully, I will be able to extend the game functionality in the future
 with additional features such as dual player mode. Score tallying. Etc.
 
 
+
+The characters are the work of "Sithjester". 
+His brilliant work can be found here: http://untamed.wild-refuge.net/rmxpresources.php?characters

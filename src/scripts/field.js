@@ -88,7 +88,7 @@ export default class Field{
       
    printpenBoxHalfCircle(x = this.canvas.width/5,
                            y = this.canvas.height/7*3.5,   
-                           radius = this.canvas.height/10,
+                           radius = this.canvas.height/15,
                            width = this.canvas.width/140,
                            startAngle = -1.5,
                            endAngle = 1.5){
@@ -111,7 +111,7 @@ export default class Field{
       this.printMidCir();
       this.printMidLine();
       this.printpenBoxHalfCircle(); // default values are for left pen box
-      this.printpenBoxHalfCircle(this.lBoxVertiXR-this.vertiLineW, this.canvas.height/7*3.5, this.canvas.height/10, this.canvas.width/140, 1.5, -1.5); //right penbox half circle
+      this.printpenBoxHalfCircle(this.lBoxVertiXR+this.vertiLineW/3, this.canvas.height/7*3.5, this.canvas.height/15, this.canvas.width/140, 1.5, -1.5); //right penbox half circle
       this.printpenBoxes();
       this.printpenBoxDot(this.canvas.width/7, this.lBoxVErtiY*3.5, 1, this.vertiLineW); // default values are for left pen box
       this.printpenBoxDot(this.canvas.width - this.canvas.width/7, this.lBoxVErtiY*3.5, 1, this.vertiLineW); // right pen box dot

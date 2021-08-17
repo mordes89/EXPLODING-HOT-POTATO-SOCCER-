@@ -3,10 +3,10 @@
   \*************************************************************************************************************************************/
 header {
   background-color: red;
-  position: flex;
+  position: relative;
   font-size: 30px;
   padding: 2px;
-  left: 50;
+  left: 500;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
@@ -17,12 +17,6 @@ footer {
 }
 
 body {
-  overflow: hidden;
-  background-color: #f6e609;
-}
-
-.canvas1 {
-  background-color: #049c18;
-  position: flex;
-  justify-content: space-around;
+  margin: 0px;
+  background-color: #0e0c61;
 }

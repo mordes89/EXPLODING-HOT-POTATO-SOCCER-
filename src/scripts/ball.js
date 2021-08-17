@@ -5,13 +5,13 @@ export default class Ball {
       this.canvas = document.querySelector('canvas');
       this.ctx = this.canvas.getContext('2d');
       
-      this.x = 0,
-      this.y = 0,
-      this.radius =  window.innerWidth/170
+      this.x = this.canvas.width/2;
+      this.y = this.canvas.height/2;
+      this.radius =  this.canvas.width/200;
       this.vx = 7;
       this.vy = 7;
       this.ballRolling = true;
-      this.ballPossession = false;
+      // this.ballPossession = false;
 
 
 
@@ -25,19 +25,27 @@ export default class Ball {
       this.ctx.fillStyle = "blue"
       this.ctx.fill(); 
    }
+   printBallAimDots(x, y, radius, width){
+      this.ctx.beginPath();
+      this.ctx.lineWidth = width;
+      this.ctx.strokeStyle = "red"
+      this.ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+      this.ctx.stroke();   
+   }
 
-   moveBall(){
+   moveBall(player){
       // Move ball:
       if (this.ballRolling) {      
          this.x += this.vx; // Left/Right
          this.y += this.vy; // Up/Down
       }
       // player takes control of ball
-      // if ((ball.x <= user.x+user.w && ball.x >= user.x) && (ball.y >= user.y && ball.y <= (user.y + user.h+30))) {
-      //    ballRolling = false;
-      //    ballPossession = true;
-      //    vy = 0.1;
-      // }
+      if ((this.x <= player.x+player.w && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + player.h+30))) {
+         this.ballRolling = false;
+         player.ballPossession = true;
+         this.vy = 0.4;
+         this.vx = 6;        
+      }
       
       // turn around at wall left/right
       if ((this.x + this.vx <= 0) || (this.x + this.vx > this.canvas.width-(this.radius*2))){
@@ -68,9 +76,13 @@ export default class Ball {
 
 
 
-   ballLogic(){
+   ballLogic(player){
       this.printBall();
-      this.moveBall();
+      this.moveBall(player);
 
+      // eventually wrap these in an if statement to only show when player has passession
+      this.printBallAimDots(this.x+(this.vx*2), this.y+(this.vy*3), 0.2, 5);
+      this.printBallAimDots(this.x+(this.vx*4), this.y+(this.vy*5), 0.2, 3);
+      this.printBallAimDots(this.x+(this.vx*6), this.y+(this.vy*7), 0.2, 1);
    }
 }
