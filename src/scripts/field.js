@@ -30,7 +30,6 @@ export default class Field{
       this.lBoxVertiH = this.canvas.height/1.4;
       this.lBoxVertiXL = this.canvas.width/5; //Left!!
       this.lBoxVertiXR = this.canvas.width - this.canvas.width/5; //Right!!
-
    }
 
    printpenBoxes(){

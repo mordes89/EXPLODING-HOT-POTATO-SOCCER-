@@ -1,6 +1,7 @@
 // import Example from "./scripts/example";
 import Player from "./scripts/players";
 import Field from "./scripts/field";
+import Ball from "./scripts/ball";
 // document.addEventListener("DOMContentLoaded", ()=> {
 //    // console.log("Hello World!");
 //    // const main = document.getElementById("main");
@@ -21,12 +22,12 @@ document.addEventListener("keyup", keyUps);
 requestAnimationFrame(Play); //Loop gameplay
 
 let field = new Field();
+let ball = new Ball();
 
 function Play(){
    // console.log(user1);   
    moveUser();
-   moveBall();
-   aimBall();
+   
 
    // Clear the board before making a move:
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
@@ -42,12 +43,15 @@ function Play(){
    // print user, ai and ball:
    printSprite(userSprite, user.w * user.frameX, user.h * user.frameY, user.w, user.h, user.x, user.y, canvas.width/10, canvas.height/6)
    printSprite(aiSprite, ai.w * ai.frameX, ai.h * ai.frameY, ai.w, ai.h, ai.x, ai.y, canvas.width/10, canvas.height/6)
-   printBall(); 
-   if (ballPossession) {      
-      printBallAimDots(ball.x+(vx*2), ball.y+(vy*3), 0.2, 5)        
-      printBallAimDots(ball.x+(vx*4), ball.y+(vy*5), 0.2, 3)        
-      printBallAimDots(ball.x+(vx*6), ball.y+(vy*7), 0.2, 1)        
-   }
+   ball.ballLogic();
+   // printBall(); 
+   // moveBall();
+   aimBall();
+   // if (ballPossession) {      
+   //    printBallAimDots(ball.x+(vx*2), ball.y+(vy*3), 0.2, 5)        
+   //    printBallAimDots(ball.x+(vx*4), ball.y+(vy*5), 0.2, 3)        
+   //    printBallAimDots(ball.x+(vx*6), ball.y+(vy*7), 0.2, 1)        
+   // }
 
    setTimeout(function(){
       // Continue playing recursively:
@@ -253,63 +257,63 @@ function userMovingPics() {
 
 
 // Ball
-let ball = {
-   x: user.x+user.w+10,
-   y: user.y+user.h+10,
-   radius: window.innerWidth/170,
-}
-function printBall(){
-   ctx.beginPath();
-   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
-   ctx.lineWidth = 7;
-   ctx.strokeStyle = "yellow"
-   ctx.stroke();   
-   ctx.fillStyle = "blue"
-   ctx.fill(); 
-}
+// let ball = {
+//    x: user.x+user.w+10,
+//    y: user.y+user.h+10,
+//    radius: window.innerWidth/170,
+// }
+// function printBall(){
+//    ctx.beginPath();
+//    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
+//    ctx.lineWidth = 7;
+//    ctx.strokeStyle = "yellow"
+//    ctx.stroke();   
+//    ctx.fillStyle = "blue"
+//    ctx.fill(); 
+// }
 
 
-let vx = 7;
-let vy = 7;
-let ballRolling = true;
-let ballPossession = false;
-function moveBall(){
-   if (ballRolling) {      
-      ball.x += vx;
-      ball.y += vy;
-   }
-   // player takes control of ball
-   if ((ball.x <= user.x+user.w && ball.x >= user.x) && (ball.y >= user.y && ball.y <= (user.y + user.h+30))) {
-      ballRolling = false;
-      ballPossession = true;
-      vy = 0.1;
-   }
+// let vx = 7;
+// let vy = 7;
+// let ballRolling = true;
+// let ballPossession = false;
+// function moveBall(){
+//    if (ballRolling) {      
+//       ball.x += vx;
+//       ball.y += vy;
+//    }
+//    // player takes control of ball
+//    if ((ball.x <= user.x+user.w && ball.x >= user.x) && (ball.y >= user.y && ball.y <= (user.y + user.h+30))) {
+//       ballRolling = false;
+//       ballPossession = true;
+//       vy = 0.1;
+//    }
    
-   // turn around at wall left/right
-   if ((ball.x + vx <= 0) || (ball.x + vx > canvas.width-(ball.radius*2))){
-      if (vx>0) {         
-         vx = -(vx+0.2);
-      }else{
-         vx = -(vx-0.2);
-      }
-      if (vx>20 || vx<-20) { //reset ball speed
-         vx = 1;
-      }     
-      // console.log(vx);
-   }
-   // turn around at wall top/bottom
-   if ((ball.y + vy <= 0) || (ball.y + vy > canvas.height-(ball.radius*2))){
-      if (vy>0) {         
-         vy = -(vy+0.2);
-      }else{
-         vy = -(vy-0.2);
-      } 
-      if (vy>20 || vy<-20) { //reset ball speed
-         vy = 1;
-      }     
-      // console.log(vy);
-   }
-}
+//    // turn around at wall left/right
+//    if ((ball.x + vx <= 0) || (ball.x + vx > canvas.width-(ball.radius*2))){
+//       if (vx>0) {         
+//          vx = -(vx+0.2);
+//       }else{
+//          vx = -(vx-0.2);
+//       }
+//       if (vx>20 || vx<-20) { //reset ball speed
+//          vx = 1;
+//       }     
+//       // console.log(vx);
+//    }
+//    // turn around at wall top/bottom
+//    if ((ball.y + vy <= 0) || (ball.y + vy > canvas.height-(ball.radius*2))){
+//       if (vy>0) {         
+//          vy = -(vy+0.2);
+//       }else{
+//          vy = -(vy-0.2);
+//       } 
+//       if (vy>20 || vy<-20) { //reset ball speed
+//          vy = 1;
+//       }     
+//       // console.log(vy);
+//    }
+// }
 
 
 // print goals
