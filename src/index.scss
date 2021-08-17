@@ -1,19 +1,23 @@
 // @import "./styles/example.scss";
 
 header {
-   background-color: red;
+   text-align: center;
+   display: relative;
+   justify-content: stretch;
+   background-color: rgb(14, 12, 97);
+   color: #ff0000;
    position: relative;
    font-size: 30px;
-   padding: 2px;
+   // padding: 2px;
    // justify-content: center;
-   left: 500;
+   // left: 500;
    // font-style: italic;
-   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-family: impact, Arial, Helvetica, sans-serif;
 
 }
 
-footer {
-   background-color: red;
+footer{
+   background-color: rgb(14, 12, 97);
    position: flex;
    justify-content: space-around;
 
@@ -23,9 +27,22 @@ body {
    margin: 0px;
    // overflow: hidden;
 
-   background-color: rgb(14, 12, 97);
+   background-color: purple;
    // border: 200px red;
    
+}
+
+.liicon, .ghicon, .fbicon {
+   width: 50px;
+}
+
+footer {
+   color: red;
+   margin: 0px;
+   height: 55px;
+   font-size: 45px;
+   display: flex;
+   font-family: Avanta Garde;
 }
 
 // .canvas1 {

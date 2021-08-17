@@ -104,3 +104,18 @@ with additional features such as dual player mode. Score tallying. Etc.
 
 The characters are the work of "Sithjester". 
 His brilliant work can be found here: http://untamed.wild-refuge.net/rmxpresources.php?characters
+
+The Favicon was downloaded from this great website:
+https://www.freefavicon.com/
+
+The Github icon is from Github themselves!:
+https://github.com/logos
+
+
+Icons made by Freepik from www.flaticon.com
+Linkedin, Whatsapp, and Facebook icons are by artist: https://www.freepik.com
+at: 
+https://www.flaticon.com/free-icon/linkedin_1384072
+https://www.flaticon.com/free-icon/whatsapp_1384079
+https://www.flaticon.com/free-icon/facebook_1384069
+

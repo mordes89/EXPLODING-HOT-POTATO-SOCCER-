@@ -99,6 +99,9 @@ export default class Player {
             ball.vy++;
             // console.log(vy);
          }  
+      } 
+      if (ball.vy<-30 && ball.vy>-15) {         
+         ball.vy++;
       }
       if (this.continuousW && this.ballPossession){  //Aim kick up
          if (ball.vy>-15) {         
