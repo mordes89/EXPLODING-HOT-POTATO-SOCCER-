@@ -11,7 +11,8 @@ export default class Ball {
       this.vx = 7;
       this.vy = 7;
       this.ballRolling = true;
-      // this.ballPossession = false;
+      this.playerballPossession = false;
+      // this.aiballPossession = false;
 
 
 
@@ -33,7 +34,7 @@ export default class Ball {
       this.ctx.stroke();   
    }
 
-   moveBall(player){
+   moveBall(player, ai){
       // Move ball:
       if (this.ballRolling) {      
          this.x += this.vx; // Left/Right
@@ -42,43 +43,35 @@ export default class Ball {
       // player takes control of ball
       if ((this.x <= player.x+player.w && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + player.h+30))) {
          this.ballRolling = false;
-         player.ballPossession = true;
+         this.playerballPossession = true;
          this.vy = 0.4;
          this.vx = 6;        
       }
       
       // turn around at wall left/right
-      if ((this.x + this.vx <= 0) || (this.x + this.vx > this.canvas.width-(this.radius*2))){
-         if (this.vx>0) {         
-            this.vx = -(this.vx+0.2);
-         }else{
-            this.vx = -(this.vx-0.2);
-         }
+      if ((this.x + this.vx <= 0) || (this.x + this.vx > this.canvas.width-(this.radius))){
+         console.log(ai.x);
+      // ^^if ball is traveling left OR ball is hitting left wall
+         this.vx = -(this.vx+0.2); //Velocity in opposite direction. i.e. turn around.
          if (this.vx>20 || this.vx<-20) { //reset ball speed
             this.vx = 7;
          }     
-         // console.log(vx);
       }
       // turn around at wall top/bottom
-      if ((this.y + this.vy <= 0) || (this.y + this.vy > this.canvas.height-(this.radius*2))){
-         if (this.vy>0) {         
-            this.vy = -(this.vy+0.2);
-         }else{
-            this.vy = -(this.vy-0.2);
-         } 
+      if ((this.y + this.vy <= 0) || (this.y + this.vy > this.canvas.height-(this.radius))){
+         this.vy = -(this.vy+0.2);
          if (this.vy>20 || this.vy<-20) { //reset ball speed
             this.vy = 7;
          }     
-         // console.log(vy);
       }
    }
 
 
 
 
-   ballLogic(player){
+   ballLogic(player, ai){
       this.printBall();
-      this.moveBall(player);
+      this.moveBall(player, ai);
 
       // eventually wrap these in an if statement to only show when player has passession
       this.printBallAimDots(this.x+(this.vx*2), this.y+(this.vy*3), 0.2, 5);

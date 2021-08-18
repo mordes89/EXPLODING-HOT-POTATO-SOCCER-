@@ -40,7 +40,7 @@ function Play(){
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
    
    field.printField();
-   ball.ballLogic(player);
+   ball.ballLogic(player, ai);
    player.playerLogic(ball);
    ai.aiLogic(ball)
    // user.printSprite.bind(user.userSprite, user.w * user.frameX, user.h * user.frameY, user.w, user.h, user.x, user.y, user.canvas.width/10, user.canvas.height/6)();
@@ -128,7 +128,7 @@ function keyUps(){
    }  
 
    if (event.code ==='KeyD'){  //Kick Ball
-      player.ballPossession = false  
+      ball.playerballPossession = false  
       ball.ballRolling = true   
       player.continuousD = false
    }

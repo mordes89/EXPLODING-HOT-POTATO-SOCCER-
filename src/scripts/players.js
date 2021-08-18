@@ -12,7 +12,7 @@ export default class Player {
       this.continuousS = false;
       this.continuousW = false;
 
-      this.ballPossession = false;
+      // ball.playerballPossession = false;
 
       this.x = x;
       this.y = y;
@@ -49,7 +49,7 @@ export default class Player {
          this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.userMovingPics();       // alternate pice in row
-         if (this.ballPossession) {      //runs to the left with ball 
+         if (ball.playerballPossession) {      //runs to the left with ball 
             ball.x = this.x+this.w;
             ball.y = this.y+this.h*1.4;
          }
@@ -58,7 +58,7 @@ export default class Player {
          this.x += this.steps;
          this.frameY = 2;
          this.userMovingPics();
-         if (this.ballPossession) {      //runs to the right with ball 
+         if (ball.playerballPossession) {      //runs to the right with ball 
             ball.x = this.x+this.w*2.5;
             ball.y = this.y+this.h*1.4;
          }
@@ -67,7 +67,7 @@ export default class Player {
          this.y += this.steps;
          this.frameY = 0;
          this.userMovingPics();
-         if (this.ballPossession) {      //runs down with ball 
+         if (ball.playerballPossession) {      //runs down with ball 
             ball.x = this.x+this.w;
             ball.y = this.y+this.h*1.8;
          }
@@ -76,7 +76,7 @@ export default class Player {
          this.y -= this.steps;
          this.frameY = 3;
          this.userMovingPics();
-         if (this.ballPossession) {      //runs up with ball 
+         if (ball.playerballPossession) {      //runs up with ball 
             ball.x = this.x+this.w*1.3;
             ball.y = this.y;
          }
@@ -92,7 +92,7 @@ export default class Player {
    }
 
    aimBall(ball){
-      if (this.continuousS && this.ballPossession){  //Aim kick down
+      if (this.continuousS && ball.playerballPossession){  //Aim kick down
          if (ball.vy<15) {         
             ball.vy++;
             // console.log(vy);
@@ -101,13 +101,13 @@ export default class Player {
       if (ball.vy<-30 && ball.vy>-15) {         
          ball.vy++;
       }
-      if (this.continuousW && this.ballPossession){  //Aim kick up
+      if (this.continuousW && ball.playerballPossession){  //Aim kick up
          if (ball.vy>-15) {         
             ball.vy--;
             // console.log(vy);
          }  
       }
-      if (this.continuousD && this.ballPossession){  
+      if (this.continuousD && ball.playerballPossession){  
          if (ball.vx<15) {         
             ball.vx++;
             console.log(ball.vx);
@@ -132,7 +132,7 @@ export default class Player {
    //       this.continuousLeft = true
    //       console.log(event.code)
    //       console.log(this.continuousLeft)
-   //       // if (ball.vx>0 && (this.ballPossession === true)) {         
+   //       // if (ball.vx>0 && (ball.playerballPossession === true)) {         
    //       //    this.vx= -(this.vx);
    //       // }
    //    }
@@ -141,7 +141,7 @@ export default class Player {
    // keyDowns(){
    //    if (event.code ==='ArrowLeft'){
    //       this.continuousLeft = true
-   //       if (ball.vx>0 && (this.ballPossession === true)) {         
+   //       if (ball.vx>0 && (ball.playerballPossession === true)) {         
    //          this.vx= -(this.vx);
    //       }
    //       console.log(event.code)

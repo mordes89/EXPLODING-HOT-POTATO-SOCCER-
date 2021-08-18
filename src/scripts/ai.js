@@ -31,7 +31,7 @@ export default class Ai {
          this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.aiMovingPics();       // alternate pice in row
-         // if (this.ballPossession) {      //runs to the left with ball 
+         // if (ball.aiballPossession) {      //runs to the left with ball 
          //    ball.x = this.x+this.w;
          //    ball.y = this.y+this.h*1.4;
          // }
@@ -40,16 +40,16 @@ export default class Ai {
          this.x += this.steps;  // Move right
          this.frameY = 2;
          this.aiMovingPics();
-         // if (this.ballPossession) {      //runs to the right with ball 
+         // if (ball.aiballPossession) {      //runs to the right with ball 
          //    ball.x = this.x+this.w*2.5;
          //    ball.y = this.y+this.h*1.4;
          // }
       }
-      if (ball.y > this.y && this.y + this.steps < this.canvas.height-this.w){
+      if (ball.y >= this.y+this.h*1.2 && this.y + this.steps < this.canvas.height-this.w){
          this.y += this.steps; //Move down
          this.frameY = 0;
          this.aiMovingPics();
-         // if (this.ballPossession) {      //runs down with ball 
+         // if (ball.aiballPossession) {      //runs down with ball 
          //    ball.x = this.x+this.w;
          //    ball.y = this.y+this.h*1.8;
          // }
@@ -58,7 +58,7 @@ export default class Ai {
          this.y -= this.steps; //Move up
          this.frameY = 3;
          this.aiMovingPics();
-         // if (this.ballPossession) {      //runs up with ball 
+         // if (ball.aiballPossession) {      //runs up with ball 
          //    ball.x = this.x+this.w*1.3;
          //    ball.y = this.y;
          // }
