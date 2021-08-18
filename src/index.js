@@ -34,7 +34,7 @@ let field = new Field();
 let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
-let messageLeft = new Messages(10, 10)
+let messageLeft = new Messages(canvas.width/60, canvas.height/60)
 
 function Play(){
    

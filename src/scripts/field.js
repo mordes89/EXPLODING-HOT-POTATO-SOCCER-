@@ -38,7 +38,6 @@ export default class Field{
    }
 
    printpenBoxes(){
-      console.log(this.ctx);
       // print goals:      
       this.ctx.stroke();
       this.ctx.fillStyle = 'blue';
