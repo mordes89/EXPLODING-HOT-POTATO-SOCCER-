@@ -76,9 +76,9 @@ export default class Field{
    }
 
    printMidLine(x = ((this.canvas.width/2) - this.canvas.width/140/2),
-   y = 0,
-   w = this.vertiLineW,
-   h = this.canvas.height,){
+                        y = 0,
+                        w = this.vertiLineW,
+                        h = this.canvas.height,){
       
       this.ctx.fillStyle = 'white';
       this.ctx.fillRect(x, y, w, h);

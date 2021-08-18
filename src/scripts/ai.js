@@ -19,10 +19,8 @@ export default class Ai {
    }
 
    aiLogic(ball){   
-      // this.ctx.drawImage.bind(img, sX, sY, sW, sH, dX, dY, dW, dH)
       this.ctx.drawImage(this.aiSprite, this.w * this.frameX, this.h * this.frameY, this.w, this.h, this.x, this.y, this.canvas.width/10, this.canvas.height/6)  //draw ai
       this.moveAi(ball);
-      // this.aimBallAi(ball)
    }
 
    moveAi(ball){

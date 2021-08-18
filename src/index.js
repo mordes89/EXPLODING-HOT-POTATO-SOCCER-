@@ -1,28 +1,18 @@
-// import Example from "./scripts/example";
 import Player from "./scripts/players";
 import Field from "./scripts/field";
 import Ball from "./scripts/ball";
 import Ai from "./scripts/ai";
 import Messages from "./scripts/messages";
-
-
 // import Game from "./scripts/game";
 
-// document.addEventListener("DOMContentLoaded", ()=> {
-//    // console.log("Hello World!");
-//    // const main = document.getElementById("main");
-//    // new Example(main);
-// }); 
+
 const canvas = document.getElementById('canvas1'); //find the <canvas> element in the HTML
 canvas.width = window.innerWidth-1;
 canvas.height = window.innerHeight-101;
 canvas.style.resize = 200
 canvas.style.position = 'flex'
 canvas.style.background = "green";
-// canvas.style.top = "200px";
-// canvas.style.left = "100px";
-const ctx = canvas.getContext('2d');            // Conventionally, ctx defined as our 2d canvas
-// ctx.rect(100,100,window.innerWidth, window.innerHeight-10)
+const ctx = canvas.getContext('2d');    // Conventionally, ctx defined as our 2d canvas
 
 
 document.addEventListener("keydown", keyDowns);
@@ -60,15 +50,12 @@ function keyDowns(){
    if (event.code ==='ArrowLeft'){      
       player.continuousLeft = true
    } else if (event.code ==='ArrowRight'){
-      // console.log(event.code)
       player.continuousRight = true  
    }
    if (event.code ==='ArrowDown'){
-      // console.log(event.code)
       player.continuousDown = true  
  
    } else if (event.code ==='ArrowUp'){
-      // console.log(event.code)
       player.continuousUp = true
 
    }
@@ -85,7 +72,7 @@ function keyDowns(){
       player.continuousW = true;      
    }
    let that = this;
-   if (event.code ==='KeyY'){          //Aim kick up
+   if (event.code ==='KeyY'){          //reset and start a new game
       // window.location.reload();
       messages.gameOver = false;
       messages.won = false;
@@ -94,26 +81,20 @@ function keyDowns(){
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
       ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
-      // ball.x = that.canvas.width/2;
-      // ball.y = that.canvas.height/2;
-      requestAnimationFrame(Play); //Loop gameplay    
+      requestAnimationFrame(Play); //gameplay    
    }
 }
 
 function keyUps(){
    if (event.code ==='ArrowLeft'){
       player.continuousLeft = false
-      // console.log(event.code)
    } else if (event.code ==='ArrowRight'){
       player.continuousRight = false
-      // console.log(event.code)
    }
    if (event.code ==='ArrowDown'){
       player.continuousDown = false
-      // console.log(event.code)
    } else if (event.code ==='ArrowUp'){
       player.continuousUp = false  
-      // console.log(event.code)
    }  
 
    if (event.code ==='KeyD'){  //Kick Ball

@@ -5,7 +5,7 @@ export default class Messages{
       
       this.x = x;      
       this.y = y; 
-      
+
       this.gameOver = true;
       this.won = false;
       this.lost = false;
@@ -98,16 +98,11 @@ export default class Messages{
          this.gameOver = true;
          this.won = true;
          // print explosion on right side
-         console.log("won");
       } 
       if ((ball.x < ball.radius*2 && (ball.y>field.goalY && ball.y<=(field.goalY+field.goalH))) || (this.countdown < 0 && ball.x <= this.canvas.width/2)) {
          this.gameOver = true;
          this.lost = true;
          // print explosion on left side   
-         console.log("lost");
-         console.log(ball.x);
-         console.log(ball.y);
-         console.log(ball.radius*2);
       }
    }
 

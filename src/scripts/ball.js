@@ -13,9 +13,6 @@ export default class Ball {
       this.ballRolling = true;
       this.playerballPossession = false;
       // this.aiballPossession = false;
-
-
-
    }
    printBall(){
       this.ctx.beginPath();
@@ -66,8 +63,6 @@ export default class Ball {
          }     
       }
    }
-
-
 
 
    ballLogic(player, ai){
