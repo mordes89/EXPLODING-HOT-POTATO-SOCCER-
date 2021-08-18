@@ -30,9 +30,21 @@ export default class Field{
       this.lBoxVertiH = this.canvas.height/1.4;
       this.lBoxVertiXL = this.canvas.width/5; //Left!!
       this.lBoxVertiXR = this.canvas.width - this.canvas.width/5; //Right!!
+
+      // goals:
+      this.goalY = this.canvas.height/3;
+      this.goalW = this.canvas.width/150; 
+      this.goalH = this.canvas.height/3;
    }
 
    printpenBoxes(){
+      console.log(this.ctx);
+      // print goals:      
+      this.ctx.stroke();
+      this.ctx.fillStyle = 'blue';
+      this.ctx.fillRect(0, this.goalY, this.goalW, this.goalH);
+      this.ctx.fillRect(this.canvas.width - this.goalW, this.goalY, this.goalW, this.goalH);
+
       this.ctx.fillStyle = 'white';
       // veritcal line - Print small box left
       this.ctx.fillRect(this.sBoxVertiXL, this.sBoxVErtiY, this.vertiLineW, this.sBoxVertiH);

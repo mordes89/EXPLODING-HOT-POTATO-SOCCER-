@@ -3,6 +3,8 @@ import Player from "./scripts/players";
 import Field from "./scripts/field";
 import Ball from "./scripts/ball";
 import Ai from "./scripts/ai";
+import Messages from "./scripts/messages";
+
 
 // import Game from "./scripts/game";
 
@@ -32,7 +34,7 @@ let field = new Field();
 let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
-// let ai = new Ai()
+let messageLeft = new Messages(10, 10)
 
 function Play(){
    
@@ -40,9 +42,11 @@ function Play(){
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
    
    field.printField();
+   messageLeft.printMessage();
    ball.ballLogic(player, ai);
    player.playerLogic(ball);
    ai.aiLogic(ball)
+
 
    setTimeout(function(){
       // Continue playing recursively:

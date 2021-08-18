@@ -42,10 +42,10 @@ export default class Ball {
       }
       // player takes control of ball
       if ((this.x <= player.x+player.w && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + player.h+30))) {
-         this.ballRolling = false;
-         this.playerballPossession = true;
          this.x = player.x;
          this.y = player.y+player.h;
+         this.ballRolling = false;
+         this.playerballPossession = true;
          this.vy = 0.4;
          this.vx = 6;        
       }
