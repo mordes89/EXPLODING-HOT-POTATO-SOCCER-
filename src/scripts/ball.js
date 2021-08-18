@@ -44,13 +44,14 @@ export default class Ball {
       if ((this.x <= player.x+player.w && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + player.h+30))) {
          this.ballRolling = false;
          this.playerballPossession = true;
+         this.x = player.x;
+         this.y = player.y+player.h;
          this.vy = 0.4;
          this.vx = 6;        
       }
       
       // turn around at wall left/right
       if ((this.x + this.vx <= 0) || (this.x + this.vx > this.canvas.width-(this.radius))){
-         console.log(ai.x);
       // ^^if ball is traveling left OR ball is hitting left wall
          this.vx = -(this.vx+0.2); //Velocity in opposite direction. i.e. turn around.
          if (this.vx>20 || this.vx<-20) { //reset ball speed

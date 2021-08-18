@@ -31,38 +31,32 @@ export default class Ai {
          this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.aiMovingPics();       // alternate pice in row
-         // if (ball.aiballPossession) {      //runs to the left with ball 
-         //    ball.x = this.x+this.w;
-         //    ball.y = this.y+this.h*1.4;
-         // }
       }
-      if (ball.x > this.x && this.x + this.steps < (this.canvas.width)-this.w){
+      if (ball.x > this.x+this.w && this.x + this.steps < (this.canvas.width)-this.w){
          this.x += this.steps;  // Move right
          this.frameY = 2;
-         this.aiMovingPics();
-         // if (ball.aiballPossession) {      //runs to the right with ball 
-         //    ball.x = this.x+this.w*2.5;
-         //    ball.y = this.y+this.h*1.4;
-         // }
+         this.aiMovingPics(); 
       }
       if (ball.y >= this.y+this.h*1.2 && this.y + this.steps < this.canvas.height-this.w){
          this.y += this.steps; //Move down
          this.frameY = 0;
-         this.aiMovingPics();
-         // if (ball.aiballPossession) {      //runs down with ball 
-         //    ball.x = this.x+this.w;
-         //    ball.y = this.y+this.h*1.8;
-         // }
+         this.aiMovingPics();  
       }
       if (ball.y < this.y && this.y - this.steps > this.canvas.height/50){
          this.y -= this.steps; //Move up
          this.frameY = 3;
          this.aiMovingPics();
-         // if (ball.aiballPossession) {      //runs up with ball 
-         //    ball.x = this.x+this.w*1.3;
-         //    ball.y = this.y;
-         // }
-      }   
+      }  
+
+      // AI kicks the ball back
+      if ((ball.x >= this.x-this.w && ball.x <= this.x+this.w)&& (ball.y>this.y && ball.y<this.y+this.h*2.3)){
+         ball.x = this.x-this.w;
+         ball.y = this.y+this.h;
+         if (ball.vx>0) {            
+            ball.vx = -(ball.vx+0.2); //Velocity in opposite direction. i.e. turn around.
+         }         
+         ball.vy = -(ball.vy+0.2);
+      } 
       
    }
    aiMovingPics() {   

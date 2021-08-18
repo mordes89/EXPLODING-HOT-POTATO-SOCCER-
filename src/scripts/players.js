@@ -22,10 +22,6 @@ export default class Player {
       this.frameY = frameY;
       this.steps = steps;
 
-      // this.listeners();
-      // this.printSprite();
-      this.moveUser();
-
       this.userSprite = new Image();
       this.userSprite.src = "././pics/hulk.png"; //W: 40, H: 56
    }
@@ -37,11 +33,8 @@ export default class Player {
       this.moveUser(ball);
       // this.printSprite(aiSprite, ai.w * ai.frameX, ai.h * ai.frameY, ai.w, ai.h, ai.x, ai.y, canvas.width/10, canvas.height/6)
       this.aimBall(ball)
-   }
-   
-   // printSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
-   //    this.ctx.drawImage.bind(img, sX, sY, sW, sH, dX, dY, dW, dH)
-   // }   
+   } 
+ 
 
    moveUser(ball){
       if (this.continuousLeft === true && this.x - this.steps > this.canvas.width/50){  
@@ -113,70 +106,5 @@ export default class Player {
             console.log(ball.vx);
          }  
       }
-   }
-
-   
-
-   // listeners(){
-   //    // this.boundkeydown = this.keydowns(this);
-   //    // document.addEventListener("keydown", this.boundkeydown);
-   //    // if (event.code ==='KeyD'){
-   //    //    console.log(event.code);  
-   //    // }
-   //    // this.boundkeyup = this.keyup.bind(this);
-   //    // document.addEventListener("keyup", this.boundkeyup);
-   // }
-
-   // keyDowns(){
-   //    if (event.code ==='ArrowLeft'){
-   //       this.continuousLeft = true
-   //       console.log(event.code)
-   //       console.log(this.continuousLeft)
-   //       // if (ball.vx>0 && (ball.playerballPossession === true)) {         
-   //       //    this.vx= -(this.vx);
-   //       // }
-   //    }
-   // }
-
-   // keyDowns(){
-   //    if (event.code ==='ArrowLeft'){
-   //       this.continuousLeft = true
-   //       if (ball.vx>0 && (ball.playerballPossession === true)) {         
-   //          this.vx= -(this.vx);
-   //       }
-   //       console.log(event.code)
-   //    } else if (event.code ==='ArrowRight'){
-   //       continuousRight = true
-   //       if (vx<0 && (ballPossession === true)) {         
-   //          vx= -(vx);
-   //       console.log(event.code)
-   //       }
-   //    }
-   //    if (event.code ==='ArrowDown'){
-   //       continuousDown = true  
-   //       if (vy<0 && (ballPossession === true)) {         
-   //          vy= -(vy);
-   //       }   
-   //    } else if (event.code ==='ArrowUp'){
-   //       continuousUp = true
-   //       if (vy>0 && (ballPossession === true)) {         
-   //          vy = -(vy);
-   //       }
-   //    }
-   
-   //    if (event.code ==='KeyD'){  //Kick Ball        
-   //       continuousD = true;      // hold down D for strength
-   //       vx = 2;
-   //    }
-   //    if (event.code ==='KeyS'){  //Aim kick down
-   //       continuousS = true;          
-   //    }
-   //    if (event.code ==='KeyW'){  //Aim kick up
-   //       continuousW = true;      
-   //    }
-   // }
-
-   
-
-   
+   }   
 }
