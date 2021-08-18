@@ -38,7 +38,6 @@ export default class Player {
 
    moveUser(ball){
       if (this.continuousLeft === true && this.x - this.steps > this.canvas.width/50){  
-         console.log("this is the moveUser in player.js");
          this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.userMovingPics();       // alternate pice in row
@@ -103,7 +102,7 @@ export default class Player {
       if (this.continuousD && ball.playerballPossession){  
          if (ball.vx<15) {         
             ball.vx++;
-            console.log(ball.vx);
+            // console.log(ball.vx);
          }  
       }
    }   

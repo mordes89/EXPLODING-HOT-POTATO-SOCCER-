@@ -34,21 +34,19 @@ let field = new Field();
 let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
-let messageLeft = new Messages(canvas.width/60, canvas.height/60)
-
+let messages = new Messages(canvas.width/60, canvas.height/60)
 function Play(){
    
    // Clear the board before making a move:
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
    
    field.printField();
-   messageLeft.printMessage();
+   messages.printMessages(ball, field);
    ball.ballLogic(player, ai);
    player.playerLogic(ball);
    ai.aiLogic(ball)
 
-
-   setTimeout(function(){
+   setTimeout(function(){      
       // Continue playing recursively:
       requestAnimationFrame(Play); //Loop gameplay
    }, 30)
@@ -57,18 +55,18 @@ function Play(){
 
 function keyDowns(){
    if (event.code ==='ArrowLeft'){
-      console.log(event.code)
+      // console.log(event.code)
       player.continuousLeft = true
    } else if (event.code ==='ArrowRight'){
-      console.log(event.code)
+      // console.log(event.code)
       player.continuousRight = true  
    }
    if (event.code ==='ArrowDown'){
-      console.log(event.code)
+      // console.log(event.code)
       player.continuousDown = true  
  
    } else if (event.code ==='ArrowUp'){
-      console.log(event.code)
+      // console.log(event.code)
       player.continuousUp = true
 
    }

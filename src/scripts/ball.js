@@ -74,9 +74,10 @@ export default class Ball {
       this.printBall();
       this.moveBall(player, ai);
 
-      // eventually wrap these in an if statement to only show when player has passession
-      this.printBallAimDots(this.x+(this.vx*2), this.y+(this.vy*3), 0.2, 5);
-      this.printBallAimDots(this.x+(this.vx*4), this.y+(this.vy*5), 0.2, 3);
-      this.printBallAimDots(this.x+(this.vx*6), this.y+(this.vy*7), 0.2, 1);
+      if (this.playerballPossession) {         
+         this.printBallAimDots(this.x+(this.vx*3), this.y+(this.vy*3), 0.2, 5);
+         this.printBallAimDots(this.x+(this.vx*5), this.y+(this.vy*5), 0.2, 3);
+         this.printBallAimDots(this.x+(this.vx*7), this.y+(this.vy*7), 0.2, 1);
+      }
    }
 }
