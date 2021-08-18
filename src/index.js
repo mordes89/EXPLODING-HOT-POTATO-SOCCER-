@@ -28,13 +28,12 @@ const ctx = canvas.getContext('2d');            // Conventionally, ctx defined a
 document.addEventListener("keydown", keyDowns);
 document.addEventListener("keyup", keyUps);
 
-requestAnimationFrame(Play); //Loop gameplay
-
 let field = new Field();
 let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
 let messages = new Messages(canvas.width/60, canvas.height/60)
+messages.printStartGame()
 function Play(){
    
    // Clear the board before making a move:
@@ -46,16 +45,19 @@ function Play(){
    player.playerLogic(ball);
    ai.aiLogic(ball)
 
-   setTimeout(function(){      
-      // Continue playing recursively:
-      requestAnimationFrame(Play); //Loop gameplay
-   }, 30)
+   if (messages.gameOver) {
+      messages.printWinLoseMessage();
+   } else {
+      setTimeout(function(){      
+         // Continue playing recursively:
+         requestAnimationFrame(Play); //Loop gameplay
+      }, 40)
+   } 
 }
 
 
 function keyDowns(){
-   if (event.code ==='ArrowLeft'){
-      // console.log(event.code)
+   if (event.code ==='ArrowLeft'){      
       player.continuousLeft = true
    } else if (event.code ==='ArrowRight'){
       // console.log(event.code)
@@ -74,12 +76,27 @@ function keyDowns(){
    if (event.code ==='KeyD'){  //Kick Ball        
       player.continuousD = true;       // hold down D for strength
       ball.vx = 2;
+      messages.gameOver = false;
    }
    if (event.code ==='KeyS'){          //Aim kick down
       player.continuousS = true;          
    }
    if (event.code ==='KeyW'){          //Aim kick up
       player.continuousW = true;      
+   }
+   let that = this;
+   if (event.code ==='KeyY'){          //Aim kick up
+      // window.location.reload();
+      messages.gameOver = false;
+      messages.won = false;
+      messages.lost = false;
+      messages.countdown = 1000;
+      player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
+      ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
+      ball = new Ball();
+      // ball.x = that.canvas.width/2;
+      // ball.y = that.canvas.height/2;
+      requestAnimationFrame(Play); //Loop gameplay    
    }
 }
 

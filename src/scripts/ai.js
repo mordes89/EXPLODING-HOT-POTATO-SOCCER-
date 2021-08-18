@@ -26,12 +26,18 @@ export default class Ai {
    }
 
    moveAi(ball){
-      if (ball.x < this.x && this.x - this.steps > this.canvas.width/2){  
+      // run back when ball is in other half -- Defensive stance
+      if (ball.x < this.canvas.width/2 && this.x + this.steps < (this.canvas.width)-this.w*5){
+         this.x += this.steps;  // Move right
+         this.frameY = 1;
+         this.aiMovingPicsBackwards(); 
+      }
+      if ((ball.x < this.x && this.x - this.steps > this.canvas.width/2) && (ball.x > this.canvas.width/2)){  
       // ^^conditions: 1.move toward ball 2.remain within own half
          this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.aiMovingPics();       // alternate pice in row
-      }
+      } 
       if (ball.x > this.x+this.w && this.x + this.steps < (this.canvas.width)-this.w){
          this.x += this.steps;  // Move right
          this.frameY = 2;
@@ -47,6 +53,7 @@ export default class Ai {
          this.frameY = 3;
          this.aiMovingPics();
       }  
+
 
       // AI kicks the ball back
       if ((ball.x >= this.x-this.w && ball.x <= this.x+this.w)&& (ball.y>this.y && ball.y<this.y+this.h*2.3)){
@@ -64,6 +71,13 @@ export default class Ai {
          this.frameX++;
       } else {
          this.frameX = 0;
+      }
+   }
+   aiMovingPicsBackwards() {   
+      if (this.frameX > 0) {
+         this.frameX--;
+      } else {
+         this.frameX = 3;
       }
    }
 }
