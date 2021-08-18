@@ -2,6 +2,8 @@
 import Player from "./scripts/players";
 import Field from "./scripts/field";
 import Ball from "./scripts/ball";
+import Ai from "./scripts/ai";
+
 // import Game from "./scripts/game";
 
 // document.addEventListener("DOMContentLoaded", ()=> {
@@ -29,8 +31,8 @@ requestAnimationFrame(Play); //Loop gameplay
 let field = new Field();
 let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
-let ai = new Player(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
-
+let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
+// let ai = new Ai()
 
 function Play(){
    
@@ -40,6 +42,7 @@ function Play(){
    field.printField();
    ball.ballLogic(player);
    player.playerLogic(ball);
+   ai.aiLogic(ball)
    // user.printSprite.bind(user.userSprite, user.w * user.frameX, user.h * user.frameY, user.w, user.h, user.x, user.y, user.canvas.width/10, user.canvas.height/6)();
 
    

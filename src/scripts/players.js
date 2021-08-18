@@ -28,8 +28,6 @@ export default class Player {
 
       this.userSprite = new Image();
       this.userSprite.src = "././pics/hulk.png"; //W: 40, H: 56
-      // this.aiSprite = new Image();
-      // this.aiSprite.src = "pics\deadpool.png"; //W: 32, H: 48,
    }
 
    playerLogic(ball){   
@@ -48,7 +46,7 @@ export default class Player {
    moveUser(ball){
       if (this.continuousLeft === true && this.x - this.steps > this.canvas.width/50){  
          console.log("this is the moveUser in player.js");
-         this.x -= this.steps;   // move in direction
+         this.x -= this.steps;   // move left
          this.frameY = 1;      // character frame row 1
          this.userMovingPics();       // alternate pice in row
          if (this.ballPossession) {      //runs to the left with ball 
