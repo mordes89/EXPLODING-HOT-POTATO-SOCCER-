@@ -54,7 +54,7 @@ export default class Ai {
 
 
       // AI kicks the ball back
-      if ((ball.x >= this.x-this.w && ball.x <= this.x+this.w) && (ball.y>this.y && ball.y<=this.y+this.h*3)){
+      if ((ball.x >= this.x-this.w && ball.x <= this.x+this.w) && (ball.y>this.y && ball.y<=this.y+(this.h*3))){
          ball.x = this.x-this.w;
          ball.y = this.y+this.h;
          if (ball.vx>0) {            

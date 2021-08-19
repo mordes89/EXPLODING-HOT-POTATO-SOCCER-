@@ -32,8 +32,8 @@ function Play(){
    
    field.printField();
    messages.printMessages(ball, field);
-   ball.ballLogic(player, ai);
    player.playerLogic(ball);
+   ball.ballLogic(player, ai);
    ai.aiLogic(ball)
 
    if (messages.gameOver) {
