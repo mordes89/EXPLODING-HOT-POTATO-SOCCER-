@@ -65,7 +65,7 @@ function keyDowns(){
          player.frameY = 2; //player image looks like it's kicking the ball
          player.frameX = 1; //player image looks like it's kicking the ball
          player.continuousD = true;       // hold down D for strength
-         // ball.vx = 2;
+         ball.vx = 2;
          messages.gameOver = false;
       }
    }
@@ -88,7 +88,6 @@ function keyDowns(){
    }
    if (event.code ==='Escape'){          //Aim kick up
       messages.gameOver = true;
-      messages.printStartGame()
    }
 }
 
@@ -103,20 +102,23 @@ function keyUps(){
    } else if (event.code ==='ArrowUp'){
       player.continuousUp = false  
    }  
-
    if (event.code ==='KeyD'){  //Kick Ball
       if (ball.playerballPossession){
          player.frameY = 2;
          player.frameX = 3;
+         // ball.x += ball.vx*20;      
          ball.playerballPossession = false  
          ball.ballRolling = true   
       }
       player.continuousD = false
    }
    if (event.code ==='KeyS'){  //Aim kick down
-      player.continuousS = false;          
+      player.continuousS = false; 
    }
    if (event.code ==='KeyW'){  //Aim kick up
       player.continuousW = false;      
+   }
+   if (event.code ==='Escape'){          //Aim kick up
+      messages.printStartGame();
    }
 }

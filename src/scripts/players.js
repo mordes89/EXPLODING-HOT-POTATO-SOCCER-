@@ -38,8 +38,8 @@ export default class Player {
          this.frameY = 1;      // character frame row 1
          this.userMovingPics();       // alternate pice in row
          if (ball.playerballPossession) {      //runs to the left with ball 
-            ball.x = this.x+this.w;
-            ball.y = this.y+(this.h);
+            ball.x = this.x+this.canvas.width/26;
+            ball.y = this.y+this.canvas.height/6.6;
          }
       }
       if (this.continuousRight === true && this.x + this.steps < (this.canvas.width/2)-(this.w*3)){
@@ -47,8 +47,8 @@ export default class Player {
          this.frameY = 2;
          this.userMovingPics();
          if (ball.playerballPossession) {      //runs to the right with ball 
-            ball.x = this.x+(this.w*3.5);
-            ball.y = this.y+(this.h);
+            ball.x = this.x+this.canvas.width/17;
+            ball.y = this.y+this.canvas.height/6.6;
          }
       }
       if (this.continuousDown === true && this.y + this.steps < this.canvas.height-(this.h)){
@@ -56,8 +56,8 @@ export default class Player {
          this.frameY = 0;
          this.userMovingPics();
          if (ball.playerballPossession) {      //runs down with ball 
-            ball.x = this.x+this.w;
-            ball.y = this.y+this.h*1.8;
+            ball.x = this.x+this.canvas.width/22;
+            ball.y = this.y+this.canvas.height/6.6;
          }
       }
       if (this.continuousUp === true && this.y - this.steps > this.canvas.height/50){
@@ -65,7 +65,7 @@ export default class Player {
          this.frameY = 3;
          this.userMovingPics();
          if (ball.playerballPossession) {      //runs up with ball 
-            ball.x = this.x+this.w*1.3;
+            ball.x = this.x+this.canvas.width/17;
             ball.y = this.y;
          }
       }   
