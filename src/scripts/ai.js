@@ -36,7 +36,7 @@ export default class Ai {
          this.frameY = 1;      // character frame row 1
          this.aiMovingPics();       // alternate pice in row
       } 
-      if (ball.x > this.x+this.w && this.x + this.steps < (this.canvas.width)-this.w){
+      if (ball.x > this.x+this.canvas.width/17 && this.x + this.steps < (this.canvas.width)-this.w){
          this.x += this.steps;  // Move right
          this.frameY = 2;
          this.aiMovingPics(); 
