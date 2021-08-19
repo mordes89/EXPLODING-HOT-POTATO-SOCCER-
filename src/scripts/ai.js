@@ -43,24 +43,23 @@ export default class Ai {
       }
       if (ball.y >= this.y+this.h*1.2 && this.y + this.steps < this.canvas.height-this.w){
          this.y += this.steps; //Move down
-         this.frameY = 0;
+         // this.frameY = 0;
          this.aiMovingPics();  
       }
       if (ball.y < this.y && this.y - this.steps > this.canvas.height/50){
          this.y -= this.steps; //Move up
-         this.frameY = 3;
+         // this.frameY = 3;
          this.aiMovingPics();
       }  
 
 
       // AI kicks the ball back
-      if ((ball.x >= this.x-this.w && ball.x <= this.x+this.w) && (ball.y>this.y && ball.y<=this.y+(this.h*3))){
-         ball.x = this.x-this.w;
-         ball.y = this.y+this.h;
+      if ((ball.x >= this.x+this.canvas.width/35 && ball.x <= this.x+this.canvas.width/17) && (ball.y>this.y && ball.y<=this.y+this.canvas.height/6.6)){
+         ball.x = this.x+this.canvas.width/35;
+         ball.y = this.y+this.canvas.height/6.6;
          if (ball.vx>0) {            
             ball.vx = -(ball.vx+0.2); //Velocity in opposite direction. i.e. turn around.
          }         
-         ball.vy = -(ball.vy+0.2);
       } 
       
    }
