@@ -118,3 +118,7 @@ https://www.flaticon.com/free-icon/linkedin_1384072
 https://www.flaticon.com/free-icon/whatsapp_1384079
 https://www.flaticon.com/free-icon/facebook_1384069
 
+Explosion Animation - 7x by agresko. You can find more from the same creator on their page: agresko.
+Behance: https://www.behance.net/mareksefcik
+Profile: https://agresko.itch.io/
+Link to this project: https://agresko.itch.io/explosion-animation---7x

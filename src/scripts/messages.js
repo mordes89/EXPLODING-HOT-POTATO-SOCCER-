@@ -16,14 +16,13 @@ export default class Messages{
            
       this.textSize = this.canvas.width/60;
       this.textX = this.x + this.canvas.width/140;
-      this.textY = this.y+this.canvas.height/70
-
+      this.textY = this.y+this.canvas.height/70      
+      
       this.countdown = 1000; //this number is irrelevant set it in index.js Ykeypress
-      this.secondsCounter = 0
    }
-
+   
    printWinLoseMessage(){ 
-      if (this.won) {
+      if (this.won) {         
          this.ctx.font = `bold ${this.textSize*5.5}px Arial`; 
          this.ctx.fillStyle = "green";
          this.ctx.fillRect(0,0,this.canvas.width, this.canvas.height);
@@ -35,7 +34,7 @@ export default class Messages{
             that.printStartGame();  
          }, 5000)
       } 
-      if (this.lost) {
+      if (this.lost) {         
          this.ctx.font = `bold ${this.textSize*5.5}px Arial`; 
          this.ctx.fillStyle = "red";
          this.ctx.fillRect(0,0,this.canvas.width, this.canvas.height);
@@ -48,7 +47,7 @@ export default class Messages{
          }, 5000)
       } 
    }
-   printStartGame(){
+   printStartGame(){      
       this.ctx.font = `bold ${this.textSize*1.5}px Arial`; 
       this.ctx.fillStyle = "purple";
       this.ctx.fillRect(0,0,this.canvas.width, this.canvas.height)
@@ -61,7 +60,7 @@ export default class Messages{
       this.ctx.fillText("There are two ways to win the game:", this.canvas.width/2, this.textY*2);
       
       this.ctx.textAlign = 'left';
-      this.ctx.fillText("1. Score a goal!", this.canvas.width/8, this.textY*4);
+      this.ctx.fillText("1. Score a goal! ", this.canvas.width/8, this.textY*4);
       this.ctx.fillText("2. Time expires with the ball", this.canvas.width/8, this.textY*6);
       this.ctx.fillText("     in the opponent's half.", this.canvas.width/8, this.textY*8);
       
@@ -91,27 +90,41 @@ export default class Messages{
          this.ctx.fillStyle = "purple";
          this.ctx.fillText(this.countdown/100, this.canvas.width-this.textSize*20, this.canvas.height/20);
          this.countdown--;
-   }
-
+   }   
    printWinLose(ball, field) {
-      if ((ball.x >= (this.canvas.width - this.canvas.width/99) )
-            // && (ball.y>this.canvas.height/3 && ball.y<(this.canvas.height - this.canvas.height/3)))  
+      if ((ball.x >= (this.canvas.width - this.canvas.width/99)
+            && (ball.y>this.canvas.height/3 && ball.y<(this.canvas.height - this.canvas.height/3)))  
             || (this.countdown < 0 && ball.x > this.canvas.width/2)){
+         for (let i = 1; i <= 7; i++) {            
+            let that = this
+            let explosion = new Image();
+            explosion.src = `././pics/explosions_agresko/Explosion_${i}.png`; //W: , H: 
+               setTimeout(function(){
+               that.ctx.drawImage(explosion, ball.x-(i*30), ball.y)
+            }, 75)      
+         }
          this.gameOver = true;
          this.won = true;
-         // print explosion on right side
       } 
       if ((ball.x < this.canvas.width/99 // Lost!!
             && (ball.y>this.canvas.height/3 && ball.y<=(this.canvas.height - this.canvas.height/3))) 
-            || (this.countdown < 0 && ball.x <= this.canvas.width/2)) {
+            || (this.countdown < 0 && ball.x <= this.canvas.width/2)) {            
+         for (let i = 1; i <= 7; i++) {            
+            let that = this
+            let explosion = new Image();
+            explosion.src = `././pics/explosions_agresko/Explosion_${i}.png`; //W: , H: 
+               setTimeout(function(){
+               that.ctx.drawImage(explosion, ball.x*i/2, ball.y)
+            }, 75)      
+         }
          this.gameOver = true;
          this.lost = true;
-         // print explosion on left side   
       }
    }
 
 
    printMessages(ball, field){
+
       this.printWinLose(ball, field);
       this.printCountdown();
       this.printInstructions();

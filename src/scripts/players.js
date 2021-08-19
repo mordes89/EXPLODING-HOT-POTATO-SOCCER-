@@ -12,8 +12,6 @@ export default class Player {
       this.continuousS = false;
       this.continuousW = false;
 
-      // ball.playerballPossession = false;
-
       this.x = x;
       this.y = y;
       this.w = w;
@@ -27,13 +25,9 @@ export default class Player {
    }
 
    playerLogic(ball){   
-      // this.ctx.drawImage.bind(img, sX, sY, sW, sH, dX, dY, dW, dH)
-      // this.ctx.drawImage(this.userSprite, this.w * this.frameX, this.h * this.frameY, this.w, this.h, this.x, this.y, this.canvas.width/10, this.canvas.height/6)
-      // ^^this is the working one.
+      // this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH)
       this.ctx.drawImage(this.userSprite, this.w * this.frameX, this.h * this.frameY, this.w, this.h, this.x, this.y, this.canvas.width/10, this.canvas.height/6)
-      // this.printSprite();
       this.moveUser(ball);
-      // this.printSprite(aiSprite, ai.w * ai.frameX, ai.h * ai.frameY, ai.w, ai.h, ai.x, ai.y, canvas.width/10, canvas.height/6)
       this.aimBall(ball)
    } 
  

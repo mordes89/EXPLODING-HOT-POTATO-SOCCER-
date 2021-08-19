@@ -23,9 +23,10 @@ let ball = new Ball();
 let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, canvas.width/16);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
 let messages = new Messages(canvas.width/60, canvas.height/60)
+
+
 messages.printStartGame()
 function Play(){
-   
    // Clear the board before making a move:
    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
    
@@ -39,8 +40,7 @@ function Play(){
       messages.printWinLoseMessage();
    } else {
       setTimeout(function(){      
-         // Continue playing recursively:
-         requestAnimationFrame(Play); //Loop gameplay
+         requestAnimationFrame(Play); // Continue playing recursively
       }, 30)
    } 
 }
@@ -62,10 +62,10 @@ function keyDowns(){
 
    if (event.code ==='KeyD'){  //Kick Ball        
       if (ball.playerballPossession){
-         player.frameY = 2;
-         player.frameX = 1;
+         player.frameY = 2; //player image looks like it's kicking the ball
+         player.frameX = 1; //player image looks like it's kicking the ball
          player.continuousD = true;       // hold down D for strength
-         ball.vx = 2;
+         // ball.vx = 2;
          messages.gameOver = false;
       }
    }
@@ -77,11 +77,10 @@ function keyDowns(){
    }
    // let that = this;
    if (event.code ==='KeyY'){          //reset and start a new game
-      // window.location.reload();
       messages.gameOver = false;
       messages.won = false;
       messages.lost = false;
-      messages.countdown = 1000;
+      messages.countdown = 400;
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
       ai = new Ai(canvas.width - canvas.width/3, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
