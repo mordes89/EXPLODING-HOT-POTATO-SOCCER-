@@ -87,7 +87,7 @@ export default class Messages{
 
    printCountdown(){
          this.ctx.font = `${this.textSize*2}px Arial`;
-         this.ctx.fillStyle = "purple";
+         this.ctx.fillStyle = "maroon";
          this.ctx.fillText(this.countdown/100, this.canvas.width-this.textSize*20, this.canvas.height/20);
          this.countdown--;
    }   

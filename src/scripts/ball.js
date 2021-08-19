@@ -71,9 +71,9 @@ export default class Ball {
       this.moveBall(player, ai);
 
       if (this.playerballPossession) {         
-         this.printBallAimDots(this.x+(this.vx*3), this.y+(this.vy*3), 0.2, 5);
-         this.printBallAimDots(this.x+(this.vx*5), this.y+(this.vy*5), 0.2, 3);
-         this.printBallAimDots(this.x+(this.vx*7), this.y+(this.vy*7), 0.2, 1);
+         this.printBallAimDots(this.x+(this.vx*3), this.y+(this.vy*3), 0.7, 5);
+         this.printBallAimDots(this.x+(this.vx*5), this.y+(this.vy*5), 0.5, 3);
+         this.printBallAimDots(this.x+(this.vx*7), this.y+(this.vy*7), 0.3, 1);
       }
    }
 }
