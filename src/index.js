@@ -67,6 +67,10 @@ function keyDowns(){
          player.continuousD = true;       // hold down D for strength
          ball.vx = 2;
          messages.gameOver = false;
+         if (!messages.muted){
+            let umkick = new Audio(`././sounds/umkick.mp4`);
+            umkick.play();
+         }
       }
    }
    if (event.code ==='KeyS'){          //Aim kick down
@@ -87,7 +91,7 @@ function keyDowns(){
       messages.gameOver = false;
       messages.won = false;
       messages.lost = false;
-      messages.countdown = 100;
+      messages.countdown = 1000;
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
       ai = new Ai(canvas.width - canvas.width/3, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
