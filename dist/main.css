@@ -1,3 +1,37 @@
-header{text-align:center;display:relative;justify-content:stretch;background-color:#0e0c61;color:red;position:relative;font-size:30px;font-family:impact,Arial,Helvetica,sans-serif}footer{background-color:#0e0c61;position:flex;justify-content:space-around}body{margin:0px;background-color:purple}.liicon,.ghicon,.fbicon{width:50px}footer{color:red;margin:0px;height:55px;font-size:45px;display:flex;font-family:Avanta Garde}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+header {
+  text-align: center;
+  display: relative;
+  justify-content: stretch;
+  background-color: #0e0c61;
+  color: #ff0000;
+  position: relative;
+  font-size: 30px;
+  font-family: impact, Arial, Helvetica, sans-serif;
+}
 
-/*# sourceMappingURL=main.css.map*/
+footer {
+  background-color: #0e0c61;
+  position: flex;
+  justify-content: space-around;
+}
+
+body {
+  margin: 0px;
+  background-color: purple;
+}
+
+.liicon, .ghicon, .fbicon {
+  width: 50px;
+}
+
+footer {
+  color: red;
+  margin: 0px;
+  height: 55px;
+  font-size: 45px;
+  display: flex;
+  font-family: Avanta Garde;
+}

@@ -67,8 +67,8 @@ export default class Messages{
       
       this.ctx.fillText("Instructions:", this.canvas.width/8, this.textY*12);
       this.ctx.fillText("Use keyboard arrows to run!", this.canvas.width/6, this.textY*14);
-      this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.canvas.width/6, this.textY*16);
-      this.ctx.fillText("Long-press 'D' to kick the ball!", this.canvas.width/6, this.textY*18);
+      this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.canvas.width/5, this.textY*16);
+      this.ctx.fillText("Long-press 'D' to kick the ball!", this.canvas.width/4, this.textY*18);
       
       this.ctx.textAlign = 'center';
       this.ctx.font = `bold ${this.textSize*2.5}px Arial`;
@@ -94,12 +94,16 @@ export default class Messages{
    }
 
    printWinLose(ball, field) {
-      if ((ball.x > this.canvas.length - ball.radius*2 && (ball.y>field.goalY && ball.y<=field.goalY+field.goalH))  || (this.countdown < 0 && ball.x > this.canvas.width/2)){
+      if ((ball.x >= (this.canvas.width - this.canvas.width/99) )
+            // && (ball.y>this.canvas.height/3 && ball.y<(this.canvas.height - this.canvas.height/3)))  
+            || (this.countdown < 0 && ball.x > this.canvas.width/2)){
          this.gameOver = true;
          this.won = true;
          // print explosion on right side
       } 
-      if ((ball.x < ball.radius*2 && (ball.y>field.goalY && ball.y<=(field.goalY+field.goalH))) || (this.countdown < 0 && ball.x <= this.canvas.width/2)) {
+      if ((ball.x < this.canvas.width/99 // Lost!!
+            && (ball.y>this.canvas.height/3 && ball.y<=(this.canvas.height - this.canvas.height/3))) 
+            || (this.countdown < 0 && ball.x <= this.canvas.width/2)) {
          this.gameOver = true;
          this.lost = true;
          // print explosion on left side   
@@ -108,9 +112,9 @@ export default class Messages{
 
 
    printMessages(ball, field){
+      this.printWinLose(ball, field);
       this.printCountdown();
       this.printInstructions();
-      this.printWinLose(ball, field);
    }
 
 }

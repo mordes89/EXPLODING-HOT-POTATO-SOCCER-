@@ -20,7 +20,7 @@ document.addEventListener("keyup", keyUps);
 
 let field = new Field();
 let ball = new Ball();
-let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
+let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, canvas.width/16);
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
 let messages = new Messages(canvas.width/60, canvas.height/60)
 messages.printStartGame()
@@ -41,7 +41,7 @@ function Play(){
       setTimeout(function(){      
          // Continue playing recursively:
          requestAnimationFrame(Play); //Loop gameplay
-      }, 40)
+      }, 30)
    } 
 }
 
@@ -61,9 +61,13 @@ function keyDowns(){
    }
 
    if (event.code ==='KeyD'){  //Kick Ball        
-      player.continuousD = true;       // hold down D for strength
-      ball.vx = 2;
-      messages.gameOver = false;
+      if (ball.playerballPossession){
+         player.frameY = 2;
+         player.frameX = 1;
+         player.continuousD = true;       // hold down D for strength
+         ball.vx = 2;
+         messages.gameOver = false;
+      }
    }
    if (event.code ==='KeyS'){          //Aim kick down
       player.continuousS = true;          
@@ -71,7 +75,7 @@ function keyDowns(){
    if (event.code ==='KeyW'){          //Aim kick up
       player.continuousW = true;      
    }
-   let that = this;
+   // let that = this;
    if (event.code ==='KeyY'){          //reset and start a new game
       // window.location.reload();
       messages.gameOver = false;
@@ -79,9 +83,13 @@ function keyDowns(){
       messages.lost = false;
       messages.countdown = 1000;
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
-      ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
+      ai = new Ai(canvas.width - canvas.width/3, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
       requestAnimationFrame(Play); //gameplay    
+   }
+   if (event.code ==='Escape'){          //Aim kick up
+      messages.gameOver = true;
+      messages.printStartGame()
    }
 }
 
@@ -98,8 +106,12 @@ function keyUps(){
    }  
 
    if (event.code ==='KeyD'){  //Kick Ball
-      ball.playerballPossession = false  
-      ball.ballRolling = true   
+      if (ball.playerballPossession){
+         player.frameY = 2;
+         player.frameX = 3;
+         ball.playerballPossession = false  
+         ball.ballRolling = true   
+      }
       player.continuousD = false
    }
    if (event.code ==='KeyS'){  //Aim kick down

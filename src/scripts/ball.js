@@ -5,7 +5,7 @@ export default class Ball {
       this.canvas = document.querySelector('canvas');
       this.ctx = this.canvas.getContext('2d');
       
-      this.x = this.canvas.width/2;
+      this.x = this.canvas.width-20   // /2;
       this.y = this.canvas.height/2;
       this.radius =  this.canvas.width/200;
       this.vx = 7;
@@ -48,17 +48,18 @@ export default class Ball {
       }
       
       // turn around at wall left/right
-      if ((this.x + this.vx <= 0) || (this.x + this.vx > this.canvas.width-(this.radius))){
-      // ^^if ball is traveling left OR ball is hitting left wall
+      if ((this.x + this.vx <= this.canvas.width/200) // <- if ball hits left wall
+         || (this.x + this.vx > this.canvas.width-this.canvas.width/200)){ // <- or ball hits right wall
          this.vx = -(this.vx+0.2); //Velocity in opposite direction. i.e. turn around.
-         if (this.vx>20 || this.vx<-20) { //reset ball speed
+         if (this.vx>20) { //reset ball speed
             this.vx = 7;
          }     
       }
       // turn around at wall top/bottom
-      if ((this.y + this.vy <= 0) || (this.y + this.vy > this.canvas.height-(this.radius))){
+      if ((this.y + this.vy <= this.canvas.width/200) 
+         || (this.y + this.vy > this.canvas.height-this.canvas.width/200)){
          this.vy = -(this.vy+0.2);
-         if (this.vy>20 || this.vy<-20) { //reset ball speed
+         if (this.vy>20) { //reset ball speed
             this.vy = 7;
          }     
       }

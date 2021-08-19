@@ -1,6 +1,6 @@
 export default class Ai {
 
-   constructor(x = (this.canvas.width - this.canvas.width/10), y = this.canvas.height/2-this.canvas.height/10, w = 32, h = 48, frameX = 0, frameY = 1, steps = 5) {
+   constructor(x = (this.canvas.width - this.canvas.width/6), y = this.canvas.height/2-this.canvas.height/10, w = 32, h = 48, frameX = 0, frameY = 1, steps = 5) {
       this.canvas = document.querySelector('canvas');
       this.ctx = this.canvas.getContext('2d');
 
