@@ -67,10 +67,10 @@ function keyDowns(){
          player.continuousD = true;       // hold down D for strength
          ball.vx = 2;
          messages.gameOver = false;
-         if (!messages.muted){
-            let umkick = new Audio(`././sounds/umkick.mp4`);
-            umkick.play();
-         }
+         // if (!messages.muted){
+         //    let umkick = new Audio(`././sounds/umkick.mp4`);
+         //    umkick.play();
+         // }
       }
    }
    if (event.code ==='KeyS'){          //Aim kick down
@@ -119,7 +119,11 @@ function keyUps(){
          player.frameX = 3;
          // ball.x += ball.vx*20;      
          ball.playerballPossession = false  
-         ball.ballRolling = true   
+         ball.ballRolling = true 
+         if (!this.muted){
+            let blastSound = new Audio(`././sounds/kick.mp4`);
+            blastSound.play();
+         }  
       }
       player.continuousD = false
    }

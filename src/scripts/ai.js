@@ -59,7 +59,11 @@ export default class Ai {
          ball.y = this.y+this.canvas.height/6.6;
          if (ball.vx>0) {            
             ball.vx = -(ball.vx+0.2); //Velocity in opposite direction. i.e. turn around.
-         }         
+         }    
+         if (!this.muted){
+            let blastSound = new Audio(`././sounds/boink.mp4`);
+            blastSound.play();
+         }     
       } 
       
    }

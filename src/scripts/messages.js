@@ -111,6 +111,10 @@ export default class Messages{
          }
          this.gameOver = true;
          this.won = true;
+         if (!this.muted){
+            let blastSound = new Audio(`././sounds/thatWentWell.mp4`);
+            blastSound.play();
+         }
       } 
       if ((ball.x < this.canvas.width/99 // Lost!!
             && (ball.y>this.canvas.height/3 && ball.y<=(this.canvas.height - this.canvas.height/3))) 
