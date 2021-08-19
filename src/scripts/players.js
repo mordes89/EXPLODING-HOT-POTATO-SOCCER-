@@ -48,7 +48,7 @@ export default class Player {
          this.userMovingPics();
          if (ball.playerballPossession) {      //runs to the right with ball 
             ball.x = this.x+this.w*3.5;
-            ball.y = this.y+this.h*3;
+            ball.y = this.y+this.h*1.8;
          }
       }
       if (this.continuousDown === true && this.y + this.steps < this.canvas.height-this.w){
