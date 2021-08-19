@@ -18,7 +18,8 @@ export default class Messages{
       this.textX = this.x + this.canvas.width/140;
       this.textY = this.y+this.canvas.height/70      
       
-      this.countdown = 1000; //this number is irrelevant set it in index.js Ykeypress
+      this.countdown = 1000; //set it in index.js Ykeypress
+      this.muted = false;
    }
    
    printWinLoseMessage(){ 
@@ -69,6 +70,11 @@ export default class Messages{
       this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.canvas.width/5, this.textY*16);
       this.ctx.fillText("Long-press 'D' to kick the ball!", this.canvas.width/4, this.textY*18);
       
+
+      this.ctx.textAlign = 'center';
+      this.ctx.font = `bold ${this.textSize*1.5}px Arial`;
+      this.ctx.fillText("Press 'M' to mute sound", this.canvas.width/2, this.textY*23);
+
       this.ctx.textAlign = 'center';
       this.ctx.font = `bold ${this.textSize*2.5}px Arial`;
       this.ctx.fillText("Press 'Y' for a new game!", this.canvas.width/2, this.textY*26);
@@ -116,6 +122,10 @@ export default class Messages{
                setTimeout(function(){
                that.ctx.drawImage(explosion, ball.x*i/2, ball.y)
             }, 75)      
+         }
+         if (!this.muted){
+            let blastSound = new Audio(`././sounds/kabloui.mp4`);
+            blastSound.play();
          }
          this.gameOver = true;
          this.lost = true;

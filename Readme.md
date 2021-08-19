@@ -102,6 +102,8 @@ with additional features such as dual player mode. Score tallying. Etc.
 
 
 # Artists
+- Sounds by yours truely: Mike Schnall
+
 - The game characters are the work of "Sithjester". 
 His brilliant work can be found here: http://untamed.wild-refuge.net/rmxpresources.php?characters
 

@@ -75,12 +75,19 @@ function keyDowns(){
    if (event.code ==='KeyW'){          //Aim kick up
       player.continuousW = true;      
    }
+
+   if (event.code ==='KeyM'){          //Aim kick down
+      messages.muted = !messages.muted; 
+      console.log(messages.muted)         
+   }
+
+
    // let that = this;
    if (event.code ==='KeyY'){          //reset and start a new game
       messages.gameOver = false;
       messages.won = false;
       messages.lost = false;
-      messages.countdown = 1500;
+      messages.countdown = 100;
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
       ai = new Ai(canvas.width - canvas.width/3, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
