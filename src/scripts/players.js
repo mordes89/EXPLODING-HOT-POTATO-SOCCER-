@@ -39,7 +39,7 @@ export default class Player {
          this.userMovingPics();       // alternate pice in row
          if (ball.playerballPossession) {      //runs to the left with ball 
             ball.x = this.x+this.w;
-            ball.y = this.y+this.h*1.6;
+            ball.y = this.y+this.h*1.4;
          }
       }
       if (this.continuousRight === true && this.x + this.steps < (this.canvas.width/2)-this.w){
@@ -48,7 +48,7 @@ export default class Player {
          this.userMovingPics();
          if (ball.playerballPossession) {      //runs to the right with ball 
             ball.x = this.x+this.w*3.5;
-            ball.y = this.y+this.h*1.6;
+            ball.y = this.y+this.h*1.4;
          }
       }
       if (this.continuousDown === true && this.y + this.steps < this.canvas.height-this.w){
