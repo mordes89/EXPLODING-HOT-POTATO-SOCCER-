@@ -5,12 +5,12 @@ export default class Ball {
       this.canvas = document.querySelector('canvas');
       this.ctx = this.canvas.getContext('2d');
       
-      this.x = this.canvas.width/8   
+      this.x = this.canvas.width/5   
       this.y = this.canvas.height/2;
       this.radius =  this.canvas.width/200;
       this.vx = 7;
       this.vy = 7;
-      this.ballRolling = true;
+      this.ballRolling = false;
       this.playerballPossession = false;
       // this.aiballPossession = false;
    }
@@ -38,7 +38,7 @@ export default class Ball {
          this.y += this.vy; // Up/Down
       }
       // player takes control of ball
-      if ((this.x <= player.x+80 && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + 56))) {
+      if ((this.x <= player.x+80 && this.x >= player.x) && (this.y >= player.y && this.y <= (player.y + 100))) {
          this.x = player.x;
          this.y = player.y+player.h;
          this.ballRolling = false;
