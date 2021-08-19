@@ -80,7 +80,7 @@ function keyDowns(){
       messages.gameOver = false;
       messages.won = false;
       messages.lost = false;
-      messages.countdown = 400;
+      messages.countdown = 1500;
       player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 56, 0, 2, 5);
       ai = new Ai(canvas.width - canvas.width/3, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
       ball = new Ball();
