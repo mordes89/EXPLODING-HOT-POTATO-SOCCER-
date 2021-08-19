@@ -82,7 +82,6 @@ function keyDowns(){
 
    if (event.code ==='KeyM'){          //Aim kick down
       messages.muted = !messages.muted; 
-      console.log(messages.muted)         
    }
 
 
