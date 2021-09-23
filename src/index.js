@@ -116,7 +116,6 @@ function keyUps(){
       if (ball.playerballPossession){
          player.frameY = 2;
          player.frameX = 3;
-         // ball.x += ball.vx*20;      
          ball.playerballPossession = false  
          ball.ballRolling = true 
          if (!this.muted){
