@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://media.giphy.com/media/ktjUt0wEKCMj6nhqyK/giphy.gif?cid=790b761193251520f90792b495c6d5e81770aa4d419778ae&rid=giphy.gif&ct=g" alt="animated" />
+</p>
+<br></br>
+
+
+
 # [EXPLODING HOT POTATO SOCCER!](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/) - Mike Schnall.
 
 Exploding Hot Potato Soccer! is a soccer game played in a rectangular 
