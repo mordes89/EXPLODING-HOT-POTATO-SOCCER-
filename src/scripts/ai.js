@@ -41,7 +41,7 @@ export default class Ai {
          this.frameY = 2;
          this.aiMovingPics(); 
       }
-      if (ball.y >= this.y+this.h*1.2 && this.y + this.steps < this.canvas.height-this.w){
+      if (ball.y >= this.y+this.h && this.y + this.steps < this.canvas.height-(this.h*2.8)){
          this.y += this.steps; //Move down
          // this.frameY = 0;
          this.aiMovingPics();  

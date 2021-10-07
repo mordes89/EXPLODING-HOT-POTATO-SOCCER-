@@ -51,7 +51,7 @@ export default class Player {
             ball.y = this.y+this.canvas.height/6.6;
          }
       }
-      if (this.continuousDown === true && this.y + this.steps < this.canvas.height-(this.h)){
+      if (this.continuousDown === true && this.y + this.steps < (this.canvas.height-(this.h*2.4))){
          this.y += this.steps;
          this.frameY = 0;
          this.userMovingPics();

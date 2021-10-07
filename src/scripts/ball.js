@@ -5,12 +5,12 @@ export default class Ball {
       this.canvas = document.querySelector('canvas');
       this.ctx = this.canvas.getContext('2d');
       
-      this.x = this.canvas.width/5   
+      this.x = this.canvas.width/2   
       this.y = this.canvas.height/2;
       this.radius =  this.canvas.width/200;
-      this.vx = 7;
-      this.vy = 7;
-      this.ballRolling = false;
+      this.vx = Math.random() * (8 - 4) + 4;
+      this.vy = Math.random() * (8 - 4) + 4;
+      this.ballRolling = true;
       this.playerballPossession = false;
       // this.aiballPossession = false;
    }
@@ -44,7 +44,36 @@ export default class Ball {
          this.ballRolling = false;
          this.playerballPossession = true;
          this.vy = 0.4;
-         this.vx = 6;        
+         this.vx = 6;
+
+         setTimeout(function(){
+            // this.playerballPossession = false;
+            document.dispatchEvent(
+               new KeyboardEvent("keydown", {
+                 key: "d",
+                 keyCode: 68, // example values.
+                 code: "KeyD", // put everything you need in this object.
+                 which: 68,
+                 shiftKey: false, // you don't need to include values
+                 ctrlKey: false,  // if you aren't going to use them.
+                 metaKey: false   // these are here for example's sake.
+               })
+             );             
+         }, Math.random() * (6000 - 2000) + 2000);   
+         setTimeout(function(){
+            // this.playerballPossession = false;
+            document.dispatchEvent(
+               new KeyboardEvent("keyup", {
+                 key: "d",
+                 keyCode: 68, // example values.
+                 code: "KeyD", // put everything you need in this object.
+                 which: 68,
+                 shiftKey: false, // you don't need to include values
+                 ctrlKey: false,  // if you aren't going to use them.
+                 metaKey: false   // these are here for example's sake.
+               })
+             );             
+         }, Math.random() * (1800 - 1500) + 1500);    
       }
       
       // turn around at wall left/right
@@ -71,9 +100,9 @@ export default class Ball {
       this.moveBall(player, ai);
 
       if (this.playerballPossession) {         
-         this.printBallAimDots(this.x+(this.vx*3), this.y+(this.vy*3), 0.7, 5);
-         this.printBallAimDots(this.x+(this.vx*5), this.y+(this.vy*5), 0.5, 3);
-         this.printBallAimDots(this.x+(this.vx*7), this.y+(this.vy*7), 0.3, 1);
+         this.printBallAimDots(this.x+(this.vx*4), this.y+(this.vy*3), 2, 5);
+         this.printBallAimDots(this.x+(this.vx*6), this.y+(this.vy*5), 1.5, 3);
+         this.printBallAimDots(this.x+(this.vx*8), this.y+(this.vy*7), 1, 1);
       }
    }
 }

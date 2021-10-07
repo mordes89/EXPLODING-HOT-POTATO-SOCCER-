@@ -58,26 +58,32 @@ export default class Messages{
       this.ctx.fillStyle = "yellow";  
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'top';
-      this.ctx.fillText("There are two ways to win the game:", this.canvas.width/2, this.textY*2);
       
+      this.ctx.fillText("There are two ways to win the game:", this.canvas.width/2, this.textY*1);
       this.ctx.textAlign = 'left';
-      this.ctx.fillText("1. Score a goal! ", this.canvas.width/8, this.textY*4);
-      this.ctx.fillText("2. Time expires with the ball", this.canvas.width/8, this.textY*6);
-      this.ctx.fillText("     in the opponent's half.", this.canvas.width/8, this.textY*8);
+      this.ctx.fillText("1. Score a Goal!  2. Time expires with the ball in the opponent's half.", this.canvas.width/8, this.textY*3);
+      this.ctx.fillStyle = "pink";
+      this.ctx.fillText("Time-bomb is random and unknown!", this.canvas.width/8, this.textY*6);
+      this.ctx.fillText("Don't hold on to the ball for long, Hulk No Like Explode!", this.canvas.width/8, this.textY*8);
+      this.ctx.fillText("He will get restless and kick the ball for you!", this.canvas.width/6, this.textY*10);
+
+
+      this.ctx.fillStyle = "yellow";
+      this.ctx.fillText("Instructions:", this.canvas.width/8, this.textY*13.5);
+      this.ctx.fillText("Use keyboard arrows to run!", this.canvas.width/6, this.textY*15.5);
+      this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.canvas.width/5, this.textY*17.5);
+      this.ctx.fillText("Long-press 'D' to kick the ball!", this.canvas.width/4, this.textY*19.5);
       
-      this.ctx.fillText("Instructions:", this.canvas.width/8, this.textY*12);
-      this.ctx.fillText("Use keyboard arrows to run!", this.canvas.width/6, this.textY*14);
-      this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.canvas.width/5, this.textY*16);
-      this.ctx.fillText("Long-press 'D' to kick the ball!", this.canvas.width/4, this.textY*18);
       
+      this.ctx.fillStyle = "white";
 
       this.ctx.textAlign = 'center';
       this.ctx.font = `bold ${this.textSize*1.5}px Arial`;
-      this.ctx.fillText("Press 'M' to mute sound", this.canvas.width/2, this.textY*23);
+      this.ctx.fillText("Press 'M' to mute sound", this.canvas.width/2, this.textY*25);
 
       this.ctx.textAlign = 'center';
       this.ctx.font = `bold ${this.textSize*2.5}px Arial`;
-      this.ctx.fillText("Press 'Y' for a new game!", this.canvas.width/2, this.textY*26);
+      this.ctx.fillText("Press 'Y' for a new game!", this.canvas.width/2, this.textY*28);
    }
   
 
@@ -89,12 +95,13 @@ export default class Messages{
       this.ctx.fillText("Use keyboard arrows to run!", this.textX, this.textY);
       this.ctx.fillText("Use 'S' and 'W' to aim the ball.", this.textX*2, this.textY*2);
       this.ctx.fillText("Long-press 'D' to kick the ball!", this.textX*3, this.textY*3);
+      this.ctx.fillText("Press 'Esc' for instructions", this.textX*32, this.textY*30);
    }
 
    printCountdown(){
          this.ctx.font = `${this.textSize*2}px Arial`;
          this.ctx.fillStyle = "maroon";
-         this.ctx.fillText(this.countdown/100, this.canvas.width-this.textSize*20, this.canvas.height/20);
+         // this.ctx.fillText(this.countdown/100, this.canvas.width-this.textSize*20, this.canvas.height/20);
          this.countdown--;
    }   
    printWinLose(ball, field) {
