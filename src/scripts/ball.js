@@ -54,12 +54,12 @@ export default class Ball {
                  keyCode: 68, // example values.
                  code: "KeyD", // put everything you need in this object.
                  which: 68,
-                 shiftKey: false, // you don't need to include values
-                 ctrlKey: false,  // if you aren't going to use them.
-                 metaKey: false   // these are here for example's sake.
+               //   shiftKey: false, // you don't need to include values
+               //   ctrlKey: false,  // if you aren't going to use them.
+               //   metaKey: false   // these are here for example's sake.
                })
              );             
-         }, Math.random() * (6000 - 2000) + 2000);   
+         }, Math.random() * (4800 - 4200) + 4200);   
          setTimeout(function(){
             // this.playerballPossession = false;
             document.dispatchEvent(
@@ -67,13 +67,10 @@ export default class Ball {
                  key: "d",
                  keyCode: 68, // example values.
                  code: "KeyD", // put everything you need in this object.
-                 which: 68,
-                 shiftKey: false, // you don't need to include values
-                 ctrlKey: false,  // if you aren't going to use them.
-                 metaKey: false   // these are here for example's sake.
+                 which: 68,                 
                })
              );             
-         }, Math.random() * (1800 - 1500) + 1500);    
+         }, Math.random() * (4800 - 4200) + 4200);    
       }
       
       // turn around at wall left/right

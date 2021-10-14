@@ -7,8 +7,8 @@
 
 # [EXPLODING HOT POTATO SOCCER!](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/) - Mike Schnall.
 
-Exploding Hot Potato Soccer! is a soccer game played in a rectangular 
-grid with two goals, one on each side. 
+Exploding Hot Potato Soccer! is a soccer game played in a rectangular grid with two goals, 
+two avatars, a countdown timer, and a hot-potato/ball that explodes.
 
 The objective of the game is to either score a goal by aiming the ball 
 into the oponents net, or having the time expire and the ball explode 
@@ -16,39 +16,33 @@ on the oponent's side of the field.
 
 Live site [link](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/)
 
-## In Exploding Hot Potato Soccer!, users will be able to:
+## In Exploding Hot Potato Soccer!, users are able to:
 1. Kick a ball/hot-potato to the other side trying to score a goal.
 2. Bounce the ball off the walls on its way to the oponent's goal.
-3. Choose the difficulty level to start the game with. This will
-   determine the speed at which the AI oponent moves.
-4. Choose the direction and speed at which to shoot the ball. The ball 
+3. Choose the direction and speed at which to shoot the ball. The ball 
    will stick to the player if the player catches it. Otherwise the ball 
-   bounces off all sides of the court. 
-5. Choose an avatar to play with.
+   bounces off all sides of the court.
 
-In addition, this project will include:
+
+In addition, this project includes:
 - Instructions for the user on their options at each point in the game.
-- Fun remarks mocking the player
+- Fun sounds
 
 
 
 ### There are two ways to win the game:
 1. Score a goal!
-2. Get the ball to the other side of the 
-   field when the timer expires and the ball explodes!
+2. Time expires with the ball in the opponent's half.
 
 
 
 # General
-The AI player will be a board, or an avater "taking-up" 
-the space of the board, that will be moving across it's own
-goal at a speed determined by the difficulty level chosen (3 speeds).
+The AI player is an avater that moves around it's own
+half chasing the ball.
 
-The player will be able to move vertically with the arrow 
-buttons kicking the ball back to the other side. The speed of the 
-AI and the speed of the ball will increase as time goes on with 
-no goal scored. At time expiration, the ball will explode. The 
-side that the the ball exploded on loses the game.
+The player is able to move vertically and horizontally using the arrow 
+buttons. When in proximity to the ball, player takes posession, can run with the ball, aim the kick, and kick at a desired velocity. The user cannot hold on to the ball for long, as the avatar will kick the hot-potato away after a while.
+There is a random timer that is not known to the user. At time expiration, the ball explodes. The side that the the ball exploded on loses the game.
 
 ## Preview
 ![](https://wireframe.cc/pro/pp/79e5f68a7463915)
