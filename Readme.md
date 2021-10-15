@@ -1,4 +1,9 @@
 <p align="center">
+  <img width="280" height="280" src="./pics/ehps_instructions.png">
+</p>
+<br></br>
+
+<p align="center">
   <img src="https://media.giphy.com/media/ktjUt0wEKCMj6nhqyK/giphy.gif?cid=790b761193251520f90792b495c6d5e81770aa4d419778ae&rid=giphy.gif&ct=g" alt="animated" />
 </p>
 <br></br>
@@ -44,58 +49,43 @@ The player is able to move vertically and horizontally using the arrow
 buttons. When in proximity to the ball, player takes posession, can run with the ball, aim the kick, and kick at a desired velocity. The user cannot hold on to the ball for long, as the avatar will kick the hot-potato away after a while.
 There is a random timer that is not known to the user. At time expiration, the ball explodes. The side that the the ball exploded on loses the game.
 
-## Preview
-![](https://wireframe.cc/pro/pp/79e5f68a7463915)
-
-### Clickable items on the page will include:
+### User choices include:
  - New game
- - links to my GitHub and Linkedin accounts
+ - Hyperlinks to my GitHub, Linkedin, Portfolio, and Facebook accounts
 
 # Gameplay
-Game controls will be the arrows and a long press on the spacebar to 
-determine strength of kick.
+Game controls are the keyboard arrows to move the avatar, 'S' and 'W' to aim the ball, and a long press on 'D' to determine strength of kick.
 
-There will be an option on the right hand side to choose 
-the difficulty level.
+This project uses the Canvas API.
 
-
-This project will use the Canvas API.
-
-
-# Timeline
-
-- ### Friday:     
-            Setup the project,
-            Initial research on getting the canvas initialization 
-            up and running in the browser. 
-            Have a grid in the browser at the least.
-
-- ### Saturday:   
-            Get the basic game-board visual in the browser. 
-            Start writing the game logic.
-
-- ### Sunday:     
-            Research and try to implement the trajectories 
-            of the ball element within the baord and gameplay.
-
-- ### Monday:     
-            Iron out what I've done so far. Start implementing
-            gameplay interactions with the user.
-            Start implementing
-            gameplay interactions with the AI.
-            Refactor code!
-
-- ### Tuesday:    
-            Have a presentable simple game. Add functionality 
-            and visuals such as funny mocking messages to the user.
-
-- ### Wednesday:  
-            Work out any lingering kinks and have a finalized project 
-            by end of day.
-
-- ### Thursday:   
-            Publish the game on the interwebs!
-
+<br></br>
+# Code
+*The code below makes sure that the user does not hold on to the ball for too long. Hulk will kick the ball away:
+  
+```
+   setTimeout(function(){
+      // this.playerballPossession = false;
+      document.dispatchEvent(
+         new KeyboardEvent("keydown", {
+            key: "d",
+            keyCode: 68, 
+            code: "KeyD", 
+            which: 68,
+         })
+         );             
+   }, Math.random() * (4800 - 4200) + 4200);   
+   setTimeout(function(){
+      // this.playerballPossession = false;
+      document.dispatchEvent(
+         new KeyboardEvent("keyup", {
+            key: "d",
+            keyCode: 68, 
+            code: "KeyD", 
+            which: 68,                 
+         })
+         );             
+   }, Math.random() * (4800 - 4200) + 4200); 
+```
 
 # Bonus
 Hopefully, I will be able to extend the game functionality in the future
@@ -108,7 +98,7 @@ with additional features such as dual player mode. Score tallying. Etc.
 - The game characters are the work of "Sithjester". 
 His brilliant work can be found here: http://untamed.wild-refuge.net/rmxpresources.php?characters
 
-- The Favicon was downloaded from this great website:
+- The Favicon was downloaded from this website:
 https://www.freefavicon.com/
 
 - The Github icon is from Github themselves!:
