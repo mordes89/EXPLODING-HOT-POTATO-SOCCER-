@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="280" height="280" src="./pics/ehps_instructions.png">
+  <img width="500" height="300" src="./pics/ehps_instructions.png">
 </p>
 <br></br>
 
