@@ -126,7 +126,8 @@ export default class Field{
       this.printpenBoxes();
       this.printpenBoxDot(this.canvas.width/7, this.lBoxVErtiY*3.5, 1, this.vertiLineW); // default values are for left pen box
       this.printpenBoxDot(this.canvas.width - this.canvas.width/7, this.lBoxVErtiY*3.5, 1, this.vertiLineW); // right pen box dot
-   }     
+   }
+        
 }
 
 

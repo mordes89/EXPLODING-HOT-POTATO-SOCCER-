@@ -24,14 +24,15 @@ Live site [link](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/)
 ## In Exploding Hot Potato Soccer!, users are able to:
 1. Kick a ball/hot-potato to the other side trying to score a goal.
 2. Bounce the ball off the walls on its way to the oponent's goal.
-3. Choose the direction and speed at which to shoot the ball. The ball 
-   will stick to the player if the player catches it. Otherwise the ball 
-   bounces off all sides of the court.
+3. The ball sticks to the player if the player catches it. Otherwise the ball 
+   bounces off all sides of the field.
+4. User can choose the direction and velocity at which to shoot the ball. 
 
 
 In addition, this project includes:
 - Instructions for the user on their options at each point in the game.
-- Fun sounds
+- The ability to see the full instructions at any time if the 'ESC' button is pressed.
+- Fun sound-effects during the game.
 
 
 
@@ -43,28 +44,30 @@ In addition, this project includes:
 
 # General
 The AI player is an avater that moves around it's own
-half chasing the ball.
+half of the field chasing the ball.
 
-The player is able to move vertically and horizontally using the arrow 
-buttons. When in proximity to the ball, player takes posession, can run with the ball, aim the kick, and kick at a desired velocity. The user cannot hold on to the ball for long, as the avatar will kick the hot-potato away after a while.
-There is a random timer that is not known to the user. At time expiration, the ball explodes. The side that the the ball exploded on loses the game.
+The user is able to move it's avatar vertically and horizontally using the arrow 
+buttons. When in proximity to the ball, user takes posession, can run with the ball, aim, and kick the ball at a desired velocity. The user cannot hold on to the ball for long, as the avatar will kick the hot-potato away after a while.
+There is a random timer that is not known to the user. At time expiration, the ball explodes. The side of the field on which the the ball explodes loses the game.
 
 ### User choices include:
- - New game
+ - Start a new game
+ - Mute sound
+ - Move avatar
+ - aim the shot
+ - kick the ball
  - Hyperlinks to my GitHub, Linkedin, Portfolio, and Facebook accounts
 
 # Gameplay
 Game controls are the keyboard arrows to move the avatar, 'S' and 'W' to aim the ball, and a long press on 'D' to determine strength of kick.
 
-This project uses the Canvas API.
+This project uses Javascript and the Canvas API.
 
-<br></br>
 # Code
 *The code below makes sure that the user does not hold on to the ball for too long. Hulk will kick the ball away:
   
 ```
    setTimeout(function(){
-      // this.playerballPossession = false;
       document.dispatchEvent(
          new KeyboardEvent("keydown", {
             key: "d",
@@ -72,10 +75,9 @@ This project uses the Canvas API.
             code: "KeyD", 
             which: 68,
          })
-         );             
+      );             
    }, Math.random() * (4800 - 4200) + 4200);   
    setTimeout(function(){
-      // this.playerballPossession = false;
       document.dispatchEvent(
          new KeyboardEvent("keyup", {
             key: "d",
@@ -83,7 +85,7 @@ This project uses the Canvas API.
             code: "KeyD", 
             which: 68,                 
          })
-         );             
+      );             
    }, Math.random() * (4800 - 4200) + 4200); 
 ```
 

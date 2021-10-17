@@ -24,11 +24,21 @@ let player = new Player(canvas.width/10, canvas.height/2-canvas.height/10, 40, 5
 let ai = new Ai(canvas.width - canvas.width/10, canvas.height/2-canvas.height/10, 32, 48, 0, 1, 5);
 let messages = new Messages(canvas.width/60, canvas.height/60)
 
+window.onresize = function() {
+   // console.log("resize");
+   // resizeCanvas();
+   location.reload();
+}
+
+// function resizeCanvas() {
+//    canvas.width = window.innerWidth-1;
+//    canvas.height = window.innerHeight-101;     
+// }
 
 messages.printStartGame()
 function Play(){
    // Clear the board before making a move:
-   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+   ctx.clearRect(0, 0, canvas.width, window.innerHeight)
    
    field.printField();
    messages.printMessages(ball, field);
