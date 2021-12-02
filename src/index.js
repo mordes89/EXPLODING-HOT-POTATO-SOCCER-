@@ -27,7 +27,7 @@ let messages = new Messages(canvas.width/60, canvas.height/60)
 window.onresize = function() {
    // console.log("resize");
    // resizeCanvas();
-   location.reload();
+   window.location.reload();
 }
 
 // function resizeCanvas() {

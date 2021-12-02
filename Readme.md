@@ -16,8 +16,8 @@ Exploding Hot Potato Soccer! is a soccer game played in a rectangular grid with 
 two avatars, a countdown timer, and a hot-potato/ball that explodes.
 
 The objective of the game is to either score a goal by aiming the ball 
-into the oponents net, or having the time expire and the ball explode 
-on the oponent's side of the field. 
+into the opponent's net, or having the time expire and the ball explode 
+on the opponent's side of the field. 
 
 Live site [link](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/)
 
