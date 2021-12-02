@@ -13,10 +13,10 @@
 # [EXPLODING HOT POTATO SOCCER!](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/) - Mike Schnall.
 
 Exploding Hot Potato Soccer! is a soccer game played in a rectangular grid with two goals, 
-two avatars, a countdown timer, and a hot-potato/ball that explodes.
+two avatars, and a hot-potato/ball that explodes after a random amount of time.
 
 The objective of the game is to either score a goal by aiming the ball 
-into the opponent's net, or having the time expire and the ball explode 
+into the opponent's goal, or having the ball explode 
 on the opponent's side of the field. 
 
 Live site [link](https://mordes89.github.io/EXPLODING-HOT-POTATO-SOCCER-/)
